@@ -1,611 +1,761 @@
 <!DOCTYPE html>
-<html class="h-100" lang="fr">
-<head>
+<html lang="fr" class="scroll-smooth">
+  <head>
     <!-- META -->
-    <meta charset="utf-8" />
-    <meta name="robots" content="all" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Mannequin Belge</title>
-	<meta name="description" content="Mannequin Belge" />
-	<meta name="keywords" content="gotta container, gotta terrassement, location container, terrassement" />
-	<meta name="rating" content="general" />
-	<meta name="author" content="Nicolas Pirotte Infographiste" />
-	<meta property="og:title" content="Mannequin Belge" />
-	<meta property="og:type"  content="website" />
-	<meta property="og:image" content="https:///www.jfg-container.be/web/img/banner/gotta-container-terrassement-og.jpg" />
-	<meta property="og:description" content="Mannequin Belge" />
-	<meta property="og:url" content="https://www.mannequinbelge.be/" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+    <title>Mannequin Belge | Modèle Photo Glamour & Artistique</title>
+    <meta
+      name="description"
+      content="Portfolio officiel. Modèle photo en Belgique spécialisée en shooting glamour, lingerie et nu artistique. Disponible pour collaborations photographes."
+    />
+    <meta
+      name="keywords"
+      content="modèle photo belgique, mannequin charme, shooting lingerie, book photo, collaboration photographe"
+    />
+    <meta name="author" content="maxsolving.com" />
 
-    <!-- CSS -->
-	<link href="web/css/app.css" rel="stylesheet">
-	
-	<!-- CANONICAL LINK -->
-	<link rel="canonical" href="https://www.jfg-container.be/" />
+    <!-- OPEN GRAPH -->
+    <meta
+      property="og:title"
+      content="Mannequin Belge | Modèle Photo Glamour & Artistique"
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:description"
+      content="Portfolio officiel. Modèle photo en Belgique spécialisée en shooting glamour, lingerie et nu artistique."
+    />
+    <meta property="og:url" content="https://www.mannequinbelge.be/" />
+    <meta
+      property="og:image"
+      content="https://www.mannequinbelge.be/mannequin.png"
+    />
+
+    <!-- CANONICAL -->
+    <link rel="canonical" href="https://www.mannequinbelge.be/" />
 
     <!-- FAVICON -->
-    <link rel="apple-touch-icon" sizes="76x76" href="web/img/favicon/apple-favicon-76x76.png" />
-    <link rel="apple-touch-icon" sizes="120x120" href="web/img/favicon/apple-favicon-120x120.png" />
-    <link rel="apple-touch-icon" sizes="152x152" href="web/img/favicon/apple-favicon-152x152.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="web/img/favicon/apple-favicon-180x180.png" />
-    <link rel="icon" type="image/png" sizes="192x192" href="web/img/favicon/favicon.png" />
-    <link rel="shortcut icon" sizes="128x128" type="image/x-icon" href="web/img/favicon/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="web/img/favicon/favicon.ico" />
 
-</head>
-<body class="h-100" id="top">
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
 
-   
+    <!-- TAILWIND CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              cinzel: ["Cinzel", "serif"],
+              inter: ["Inter", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
 
-    <!-- NAVBAR -->
-    <nav class="fixed-top navbar navbar-expand-lg bg-dark" aria-label="Main navigation">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        <div class="container-xl px-15">
+      body {
+        overflow-x: hidden;
+        background: #050505;
+        color: #e5e5e5;
+        font-family: "Inter", sans-serif;
+      }
 
-            <!-- MOBILE BUTTON -->
-            <button class="d-flex d-lg-none hamburger hamburger--spin js-navbar-toggle navbar-toggle position-relative" aria-label="Main menu button" type="button">
-                <span class="hamburger-box">
-                    <span class="hamburger-inner"></span>
-                </span>
-            </button>
+      /* ANIMATED BACKGROUND BLOBS */
+      .bg-animated {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        overflow: hidden;
+        pointer-events: none;
+      }
 
-            <!-- NAV -->
-            <div class="navbar-collapse" id="navbarNav">
+      .blob {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.15;
+        animation: float 20s ease-in-out infinite;
+      }
 
-                <ul class="mr-lg-auto navbar-nav text-center" id="navbarScrolling">
-                    <li class="nav-item">
-                        <a href="#top" class="nav-anchor nav-link">
-                            Shooting
-                        </a>
-                    </li>
+      .blob-1 {
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle, #ff006e, #8338ec);
+        top: -250px;
+        left: -250px;
+        animation-delay: 0s;
+      }
 
-                   
-                    <li class="nav-item">
-                        <a href="#contactSection" class="nav-anchor nav-link">
-                            Contactez-moi
-                        </a>
-                    </li>
-                </ul>
-                
-            </div>
+      .blob-2 {
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, #3a86ff, #06ffa5);
+        bottom: -200px;
+        right: -200px;
+        animation-delay: -7s;
+      }
 
-            <!-- SOCIAL 
-            <div class="navbar-social position-relative">
+      .blob-3 {
+        width: 350px;
+        height: 350px;
+        background: radial-gradient(circle, #fb5607, #ffbe0b);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        animation-delay: -14s;
+      }
 
-                <ul class="align-items-center d-flex list-unstyled m-0">
-                    <li>
-                        <a href="#" class="text-decoration-none text-white text-red--hover" aria-label="Facebook" target="_blank">
-                            <i class="fa-brands fa-facebook-square fa-2xl"></i>
-                        </a>
-                    </li>
-                    
-					<li>
-                        <a href="mailto:dominique_events@skynet.be" class="text-decoration-none text-white text-red--hover" aria-label="mail">
-                           <p class="fs-12">dominique_events(at)skynet.be</p>
-                        </a>
-                    </li>
-					
-                </ul>
+      @keyframes float {
+        0%,
+        100% {
+          transform: translate(0, 0) scale(1);
+        }
+        25% {
+          transform: translate(100px, -100px) scale(1.1);
+        }
+        50% {
+          transform: translate(-50px, 100px) scale(0.9);
+        }
+        75% {
+          transform: translate(-100px, -50px) scale(1.05);
+        }
+      }
 
-            </div>
-			-->
+      /* GLASSMORPHISM HEADER */
+      header {
+        backdrop-filter: blur(20px);
+        background: rgba(5, 5, 5, 0.7);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      /* NEON BUTTON */
+      .btn-neon {
+        position: relative;
+        color: #fff;
+        border: 2px solid #ff006e;
+        padding: 14px 40px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        transition: all 0.4s;
+        box-shadow: 0 0 20px rgba(255, 0, 110, 0.5);
+      }
+
+      .btn-neon:hover {
+        background: #ff006e;
+        box-shadow: 0 0 40px rgba(255, 0, 110, 0.8),
+          0 0 60px rgba(255, 0, 110, 0.5);
+        transform: translateY(-2px);
+      }
+
+      /* HERO IMAGE */
+      .hero-image {
+        position: relative;
+        height: 100vh;
+        background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)),
+          url("https://images.unsplash.com/photo-1509631179647-0177331693ae?w=1920&q=80");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+      }
+
+      /* GALLERY HOVER EFFECT */
+      .gallery-item {
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+      }
+
+      .gallery-item:hover {
+        transform: scale(1.05);
+      }
+
+      .gallery-item img {
+        transition: transform 0.5s ease;
+      }
+
+      .gallery-item:hover img {
+        transform: scale(1.1);
+      }
+
+      .gallery-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+        opacity: 0;
+        transition: opacity 0.3s;
+        display: flex;
+        align-items: flex-end;
+        padding: 20px;
+      }
+
+      .gallery-item:hover .gallery-overlay {
+        opacity: 1;
+      }
+
+      /* LIGHTBOX */
+      .lightbox {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.95);
+        z-index: 9999;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .lightbox.active {
+        display: flex;
+      }
+
+      .lightbox img {
+        max-width: 90%;
+        max-height: 90vh;
+        object-fit: contain;
+      }
+
+      .lightbox-close {
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        color: white;
+        font-size: 40px;
+        cursor: pointer;
+        z-index: 10000;
+      }
+
+      /* FADE IN UP ANIMATION */
+      .fade-in-up {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+
+      /* SCROLL INDICATOR */
+      .scroll-indicator {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        animation: bounce 2s infinite;
+      }
+
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateX(-50%) translateY(0);
+        }
+        50% {
+          transform: translateX(-50%) translateY(-10px);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ANIMATED BACKGROUND -->
+    <div class="bg-animated">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="fixed top-0 w-full z-50">
+      <nav
+        class="max-w-screen-xl mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <a
+          href="#"
+          class="font-cinzel text-2xl md:text-3xl font-bold tracking-wider text-white"
+          aria-label="Mannequin Belge - Accueil"
+        >
+          MANNEQUIN BELGE
+        </a>
+
+        <ul class="hidden md:flex gap-8 font-inter">
+          <li>
+            <a
+              href="#philosophie"
+              class="text-gray-300 hover:text-white transition-colors"
+              aria-label="Voir la philosophie"
+              >Philosophie</a
+            >
+          </li>
+          <li>
+            <a
+              href="#galerie"
+              class="text-gray-300 hover:text-white transition-colors"
+              aria-label="Voir la galerie photo"
+              >Galerie</a
+            >
+          </li>
+          <li>
+            <a
+              href="#contact"
+              class="text-gray-300 hover:text-white transition-colors"
+              aria-label="Me contacter"
+              >Contact</a
+            >
+          </li>
+        </ul>
+
+        <!-- MOBILE MENU BUTTON -->
+        <button
+          id="mobileMenuBtn"
+          class="md:hidden text-white text-2xl"
+          aria-label="Menu mobile"
+        >
+          ☰
+        </button>
+      </nav>
+
+      <!-- MOBILE MENU -->
+      <div
+        id="mobileMenu"
+        class="hidden md:hidden bg-black/90 backdrop-blur-lg"
+      >
+        <ul class="flex flex-col items-center gap-6 py-8 font-inter">
+          <li>
+            <a
+              href="#philosophie"
+              class="text-gray-300 hover:text-white transition-colors text-lg mobile-link"
+              >Philosophie</a
+            >
+          </li>
+          <li>
+            <a
+              href="#galerie"
+              class="text-gray-300 hover:text-white transition-colors text-lg mobile-link"
+              >Galerie</a
+            >
+          </li>
+          <li>
+            <a
+              href="#contact"
+              class="text-gray-300 hover:text-white transition-colors text-lg mobile-link"
+              >Contact</a
+            >
+          </li>
+        </ul>
+      </div>
+    </header>
+
+    <main class="relative z-10">
+      <!-- HERO SECTION -->
+      <section class="hero-image flex items-center justify-center">
+        <div class="text-center px-6">
+          <h1
+            class="font-cinzel text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 fade-in-up"
+          >
+            L'ART DE L'ÉPHÉMÈRE
+          </h1>
+          <p
+            class="font-inter text-lg md:text-2xl text-gray-300 mb-10 max-w-2xl mx-auto fade-in-up"
+          >
+            Entre ombre et lumière, chaque instant capturé devient éternité
+          </p>
+          <a
+            href="#galerie"
+            class="btn-neon inline-block fade-in-up"
+            aria-label="Voir mon book photo"
+          >
+            Voir le Book
+          </a>
         </div>
 
-    </nav>
-
-   
-    <!-- PLANNING SECTION -->
-    <section class="position-relative w-100" id="planningSection">
-
-       
-        <div class="bg-gray-100 content py-100">
-
-            <div class="container-lg text-center">
-
-                <div class="justify-content-center row">
-    
-                    <div class="col-xxl-10">
-    
-                       <img src="https://mannequinbelge.be/mannequin.png" alt="Mannequin Belge"/>
-			
-	
-						 <h2 class="font-weight-semi fs-40 fs-sm-60 mb-30 text-red mt-40">
-                            Mannequin Belge
-                        </h2>
-						
-						<p class="fs-12 text-gray-400">
-						<i>
-						Du matin jusqu’au soir mon corps est mon travail<br/>
-						Tous les pores de ma peau connaissent tous les onguents<br/>
-						J’ai cent mille fois peigné ma chevelure de paille<br/>
-						Et j’ai peint sur mes ongles toutes les couleurs du temps<br/>
-						Je porte bien l’éphémère, ma beauté m’appartient<br/>
-						Mais les œuvres qui m’habillent, parcourent si peu mon corps<br/>
-						Elles s’effacent, se renouvellent, mais ne me rendent rien<br/>
-						Je suis leur présentoir, mais pourtant pas leur sort<br/>
-						Mon aventure d’actrice, ma paye me le rend bien<br/>
-						Mais tous les compromis, de ce rêve éreintant<br/>
-						N’en valent que peu l’enjeu, c’est ma vie qui déteint<br/>
-						Dans cette jeunesse brisée par ce travail errant<br/>
-						Je mange peu, souris tant, mais je n’suis pas heureuse<br/>
-						On gagne comme on descend, dans cette histoire scabreuse<br/>
-						Tous les flashs qui m’atteignent, que seront-ils demain ?<br/>
-						Me feront-ils monter ou bien descendre du train ?<br/>
-						J’ai été une princesse, un homme, même un vampire<br/>
-						Shootings improvisés ou mises en scène parfaites<br/>
-						On fait de mon meilleur, ce qui existe de pire<br/>
-						L’arrogante vanité habille ma peau refaite<br/>
-						Quand tout sera fini, les voyages à Paris<br/>
-						A Tokyo ou Milan, les défilés de mode<br/>
-						Mon book et mes albums, ils achèveront cette vie<br/>
-						A trente ans tout au plus, que la Beauté érode
-						</i>
-						</p>
-<br/><br/>
-                        <p class="fs-12 text-gray-400">
-						<i>
-						Elle est si belle, Les flashs sont pour elle.<br/>
-						Elle défile, le profil haut, Les regards se posent sur son manteau.<br/>
-						D'un geste élégant, Elle l'enlève avec un bruissement. <br/>
-						La couleur rouge étincelle, La lumière est sans pareille.<br/>
-						Les fines broderies Lesage, Se retrouvent sur son corsage. <br/>
-						Ses yeux bleus comme l'océan, Jettent des regards étincelants.<br/>
-						Son tour est déjà fini, Enhardie par son succès, elle sourit. <br/>
-						On lui enlève ses accessoires, Sa jolie robe de moire.<br/>
-						Son visage est soudain pâle, Son souffle ressemble à un râle. <br/>
-						Sa maigreur est épouvantable,les gens lui jettent des regards pas affables.<br/>
-						Ses lèvres ont perdu toute couleur, A cause de on dur labeur. <br/>
-						Son ventre émet un petit bruit. Elle n'a rien mangé aujourd'hui.
-						</i>
-						</p>
-						
-						
-						
-                    </div>
-    
-                </div>
-    
-            </div>
-
-            <!--GALLERY -->
-            <div class="container-fluid mt-30 px-lg-30">
-
-                <div class="mx-n7h mx-lg-n15 row" id="imgGallery">
-
-                    
-					
-					<div class="col-6 col-lg-4 col-xl-20 mt-30 px-7h px-lg-15">
-
-                        <div class="gallery-img text-center">
-
-                            <a href="web/img/gallery/lg/shooting09-10-23-002.jpg" class="d-block gallery-link overflow-hidden position-relative text-decoration-none">
-
-                                <img src="web/img/gallery/shooting09-10-23-002.jpg" alt="Shooting du 09/10/2023" />
-
-                                <div class="flex-center flex-column h-100 img-overlay lf-0 position-absolute tp-0 w-100">
-                                    <i class="fs-40 overlay-icon mdi mdi-magnify-expand text-white"></i>
-                                     
-                                </div>
-    
-                            </a>
-
-                        </div>
-
-                    </div>
-					
-								
-					<div class="col-6 col-lg-4 col-xl-20 mt-30 px-7h px-lg-15">
-
-                        <div class="gallery-img text-center">
-
-                            <a href="web/img/gallery/lg/shooting09-10-23-007.jpg" class="d-block gallery-link overflow-hidden position-relative text-decoration-none">
-
-                                <img src="web/img/gallery/shooting09-10-23-007.jpg" alt="Shooting du 09/10/2023" />
-
-                                <div class="flex-center flex-column h-100 img-overlay lf-0 position-absolute tp-0 w-100">
-                                    <i class="fs-40 overlay-icon mdi mdi-magnify-expand text-white"></i>
-									 
-                                </div>
-    
-                            </a>
-
-                        </div>
-
-                    </div>
-					
-					<div class="col-6 col-lg-4 col-xl-20 mt-30 px-7h px-lg-15">
-
-                        <div class="gallery-img text-center">
-
-                            <a href="web/img/gallery/lg/shooting09-10-23-008.jpg" class="d-block gallery-link overflow-hidden position-relative text-decoration-none">
-
-                                <img src="web/img/gallery/shooting09-10-23-008.jpg" alt="Shooting du 09/10/2023" />
-
-                                <div class="flex-center flex-column h-100 img-overlay lf-0 position-absolute tp-0 w-100">
-                                    <i class="fs-40 overlay-icon mdi mdi-magnify-expand text-white"></i>
-									 
-                                </div>
-    
-                            </a>
-
-                        </div>
-
-                    </div>
-					
-										
-						
-					<div class="col-6 col-lg-4 col-xl-20 mt-30 px-7h px-lg-15">
-
-                        <div class="gallery-img text-center">
-
-                            <a href="web/img/gallery/lg/shooting09-09-24-001.jpg" class="d-block gallery-link overflow-hidden position-relative text-decoration-none">
-
-                                <img src="web/img/gallery/shooting09-09-24-001.jpg" alt="Shooting du 09/09/2024" />
-
-                                <div class="flex-center flex-column h-100 img-overlay lf-0 position-absolute tp-0 w-100">
-                                    <i class="fs-40 overlay-icon mdi mdi-magnify-expand text-white"></i>
-									 
-                                </div>
-    
-                            </a>
-
-                        </div>
-
-                    </div>
-					
-					<div class="col-6 col-lg-4 col-xl-20 mt-30 px-7h px-lg-15">
-
-                        <div class="gallery-img text-center">
-
-                            <a href="web/img/gallery/lg/shooting09-09-24-002.jpg" class="d-block gallery-link overflow-hidden position-relative text-decoration-none">
-
-                                <img src="web/img/gallery/shooting09-09-24-002.jpg" alt="Shooting du 09/09/2024" />
-
-                                <div class="flex-center flex-column h-100 img-overlay lf-0 position-absolute tp-0 w-100">
-                                    <i class="fs-40 overlay-icon mdi mdi-magnify-expand text-white"></i>
-									 
-                                </div>
-    
-                            </a>
-
-                        </div>
-
-                    </div>
-					
-					<div class="col-6 col-lg-4 col-xl-20 mt-30 px-7h px-lg-15">
-
-                        <div class="gallery-img text-center">
-
-                            <a href="web/img/gallery/lg/shooting09-10-23-003.jpg" class="d-block gallery-link overflow-hidden position-relative text-decoration-none">
-
-                                <img src="web/img/gallery/shooting09-10-23-003.jpg" alt="Shooting du 09/10/2023" />
-
-                                <div class="flex-center flex-column h-100 img-overlay lf-0 position-absolute tp-0 w-100">
-                                    <i class="fs-40 overlay-icon mdi mdi-magnify-expand text-white"></i>
-                                     
-                                </div>
-    
-                            </a>
-
-                        </div>
-
-                    </div>
-					
-					<div class="col-6 col-lg-4 col-xl-20 mt-30 px-7h px-lg-15">
-
-                        <div class="gallery-img text-center">
-
-                            <a href="web/img/gallery/lg/shooting09-09-24-101.jpg" class="d-block gallery-link overflow-hidden position-relative text-decoration-none">
-
-                                <img src="web/img/gallery/shooting09-09-24-101.jpg" alt="Shooting du 09/09/2024" />
-
-                                <div class="flex-center flex-column h-100 img-overlay lf-0 position-absolute tp-0 w-100">
-                                    <i class="fs-40 overlay-icon mdi mdi-magnify-expand text-white"></i>
-									 
-                                </div>
-    
-                            </a>
-
-                        </div>
-
-                    </div>
-					
-					<div class="col-6 col-lg-4 col-xl-20 mt-30 px-7h px-lg-15">
-
-                        <div class="gallery-img text-center">
-
-                            <a href="web/img/gallery/lg/shooting09-09-24-102.jpg" class="d-block gallery-link overflow-hidden position-relative text-decoration-none">
-
-                                <img src="web/img/gallery/shooting09-09-24-102.jpg" alt="Shooting du 09/09/2024" />
-
-                                <div class="flex-center flex-column h-100 img-overlay lf-0 position-absolute tp-0 w-100">
-                                    <i class="fs-40 overlay-icon mdi mdi-magnify-expand text-white"></i>
-									 
-                                </div>
-    
-                            </a>
-
-                        </div>
-
-                    </div>
-					
-					<div class="col-6 col-lg-4 col-xl-20 mt-30 px-7h px-lg-15">
-
-                        <div class="gallery-img text-center">
-
-                            <a href="web/img/gallery/lg/shooting09-09-24-103.jpg" class="d-block gallery-link overflow-hidden position-relative text-decoration-none">
-
-                                <img src="web/img/gallery/shooting09-09-24-103.jpg" alt="Shooting du 09/09/2024" />
-
-                                <div class="flex-center flex-column h-100 img-overlay lf-0 position-absolute tp-0 w-100">
-                                    <i class="fs-40 overlay-icon mdi mdi-magnify-expand text-white"></i>
-									 
-                                </div>
-    
-                            </a>
-
-                        </div>
-
-                    </div>
-					
-					<div class="col-6 col-lg-4 col-xl-20 mt-30 px-7h px-lg-15">
-
-                        <div class="gallery-img text-center">
-
-                            <a href="web/img/gallery/lg/shooting09-09-24-104.jpg" class="d-block gallery-link overflow-hidden position-relative text-decoration-none">
-
-                                <img src="web/img/gallery/shooting09-09-24-104.jpg" alt="Shooting du 09/09/2024" />
-
-                                <div class="flex-center flex-column h-100 img-overlay lf-0 position-absolute tp-0 w-100">
-                                    <i class="fs-40 overlay-icon mdi mdi-magnify-expand text-white"></i>
-									 
-                                </div>
-    
-                            </a>
-
-                        </div>
-
-                    </div>
-					
-					<div class="col-6 col-lg-4 col-xl-20 mt-30 px-7h px-lg-15">
-
-                        <div class="gallery-img text-center">
-
-                            <a href="web/img/gallery/lg/shooting09-09-24-105.jpg" class="d-block gallery-link overflow-hidden position-relative text-decoration-none">
-
-                                <img src="web/img/gallery/shooting09-09-24-105.jpg" alt="Shooting du 09/09/2024" />
-
-                                <div class="flex-center flex-column h-100 img-overlay lf-0 position-absolute tp-0 w-100">
-                                    <i class="fs-40 overlay-icon mdi mdi-magnify-expand text-white"></i>
-									 
-                                </div>
-    
-                            </a>
-
-                        </div>
-
-                    </div>
-					
-					<div class="col-6 col-lg-4 col-xl-20 mt-30 px-7h px-lg-15">
-
-                        <div class="gallery-img text-center">
-
-                            <a href="web/img/gallery/lg/shooting09-09-24-106.jpg" class="d-block gallery-link overflow-hidden position-relative text-decoration-none">
-
-                                <img src="web/img/gallery/shooting09-09-24-106.jpg" alt="Shooting du 09/09/2024" />
-
-                                <div class="flex-center flex-column h-100 img-overlay lf-0 position-absolute tp-0 w-100">
-                                    <i class="fs-40 overlay-icon mdi mdi-magnify-expand text-white"></i>
-									 
-                                </div>
-    
-                            </a>
-
-                        </div>
-
-                    </div>
-					
-					<div class="col-6 col-lg-4 col-xl-20 mt-30 px-7h px-lg-15">
-
-                        <div class="gallery-img text-center">
-
-                            <a href="web/img/gallery/lg/shooting09-09-24-107.jpg" class="d-block gallery-link overflow-hidden position-relative text-decoration-none">
-
-                                <img src="web/img/gallery/shooting09-09-24-107.jpg" alt="Shooting du 09/09/2024" />
-
-                                <div class="flex-center flex-column h-100 img-overlay lf-0 position-absolute tp-0 w-100">
-                                    <i class="fs-40 overlay-icon mdi mdi-magnify-expand text-white"></i>
-									 
-                                </div>
-    
-                            </a>
-
-                        </div>
-
-                    </div>
-					
-					<div class="col-6 col-lg-4 col-xl-20 mt-30 px-7h px-lg-15">
-
-                        <div class="gallery-img text-center">
-
-                            <a href="web/img/gallery/lg/shooting09-09-24-108.jpg" class="d-block gallery-link overflow-hidden position-relative text-decoration-none">
-
-                                <img src="web/img/gallery/shooting09-09-24-108.jpg" alt="Shooting du 09/09/2024" />
-
-                                <div class="flex-center flex-column h-100 img-overlay lf-0 position-absolute tp-0 w-100">
-                                    <i class="fs-40 overlay-icon mdi mdi-magnify-expand text-white"></i>
-									 
-                                </div>
-    
-                            </a>
-
-                        </div>
-
-                    </div>
-					
-					<div class="col-6 col-lg-4 col-xl-20 mt-30 px-7h px-lg-15">
-
-                        <div class="gallery-img text-center">
-
-                            <a href="web/img/gallery/lg/shooting09-09-24-109.jpg" class="d-block gallery-link overflow-hidden position-relative text-decoration-none">
-
-                                <img src="web/img/gallery/shooting09-09-24-109.jpg" alt="Shooting du 09/09/2024" />
-
-                                <div class="flex-center flex-column h-100 img-overlay lf-0 position-absolute tp-0 w-100">
-                                    <i class="fs-40 overlay-icon mdi mdi-magnify-expand text-white"></i>
-									 
-                                </div>
-    
-                            </a>
-
-                        </div>
-
-                    </div>
-					
-					<div class="col-6 col-lg-4 col-xl-20 mt-30 px-7h px-lg-15">
-
-                        <div class="gallery-img text-center">
-
-                            <a href="web/img/gallery/lg/shooting09-09-24-110.jpg" class="d-block gallery-link overflow-hidden position-relative text-decoration-none">
-
-                                <img src="web/img/gallery/shooting09-09-24-110.jpg" alt="Shooting du 09/09/2024" />
-
-                                <div class="flex-center flex-column h-100 img-overlay lf-0 position-absolute tp-0 w-100">
-                                    <i class="fs-40 overlay-icon mdi mdi-magnify-expand text-white"></i>
-									 
-                                </div>
-    
-                            </a>
-
-                        </div>
-
-                    </div>
-					
-					<div class="col-6 col-lg-4 col-xl-20 mt-30 px-7h px-lg-15">
-
-                        <div class="gallery-img text-center">
-
-                            <a href="web/img/gallery/lg/shooting09-10-23-001.jpg" class="d-block gallery-link overflow-hidden position-relative text-decoration-none">
-
-                                <img src="web/img/gallery/shooting09-10-23-001.jpg" alt="Shooting du 09/10/2023" />
-
-                                <div class="flex-center flex-column h-100 img-overlay lf-0 position-absolute tp-0 w-100">
-                                    <i class="fs-40 overlay-icon mdi mdi-magnify-expand text-white"></i>
-									 
-                                </div>
-    
-                            </a>
-
-                        </div>
-
-                    </div>
-					
-					<div class="col-6 col-lg-4 col-xl-20 mt-30 px-7h px-lg-15">
-
-                        <div class="gallery-img text-center">
-
-                            <a href="web/img/gallery/lg/shooting09-10-23-004.jpg" class="d-block gallery-link overflow-hidden position-relative text-decoration-none">
-
-                                <img src="web/img/gallery/shooting09-10-23-004.jpg" alt="Shooting du 09/10/2023" />
-
-                                <div class="flex-center flex-column h-100 img-overlay lf-0 position-absolute tp-0 w-100">
-                                    <i class="fs-40 overlay-icon mdi mdi-magnify-expand text-white"></i>
-									 
-                                </div>
-    
-                            </a>
-
-                        </div>
-
-                    </div>
-					
-					
-					<div class="col-6 col-lg-4 col-xl-20 mt-30 px-7h px-lg-15">
-
-                        <div class="gallery-img text-center">
-
-                            <a href="web/img/gallery/lg/shooting09-10-23-005.jpg" class="d-block gallery-link overflow-hidden position-relative text-decoration-none">
-
-                                <img src="web/img/gallery/shooting09-10-23-005.jpg" alt="Shooting du 09/10/2023" />
-
-                                <div class="flex-center flex-column h-100 img-overlay lf-0 position-absolute tp-0 w-100">
-                                    <i class="fs-40 overlay-icon mdi mdi-magnify-expand text-white"></i>
-									 
-                                </div>
-    
-                            </a>
-
-                        </div>
-
-                    </div>
-									
-
-                </div>
-
-            </div>
-
-           
+        <div class="scroll-indicator">
+          <svg
+            class="w-6 h-10 text-white"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 14l-7 7m0 0l-7-7m7 7V3"
+            ></path>
+          </svg>
         </div>
+      </section>
 
-    </section>
+      <!-- PHILOSOPHIE SECTION -->
+      <section
+        id="philosophie"
+        class="py-20 md:py-32 bg-gradient-to-b from-black to-gray-900"
+      >
+        <div class="max-w-screen-xl mx-auto px-6">
+          <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="fade-in-up">
+              <h2
+                class="font-cinzel text-4xl md:text-5xl font-bold text-white mb-8"
+              >
+                Ma Philosophie
+              </h2>
 
-   
+              <div
+                class="text-gray-400 font-inter text-base md:text-lg leading-relaxed space-y-6 italic"
+              >
+                <p>
+                  Du matin jusqu'au soir mon corps est mon travail<br />
+                  Tous les pores de ma peau connaissent tous les onguents<br />
+                  J'ai cent mille fois peigné ma chevelure de paille<br />
+                  Et j'ai peint sur mes ongles toutes les couleurs du temps
+                </p>
 
-    <!-- CONTACT SECTION -->
-    <section class="bg-white position-relative py-100 w-100" id="contactSection">
+                <p>
+                  Je porte bien l'éphémère, ma beauté m'appartient<br />
+                  Mais les œuvres qui m'habillent, parcourent si peu mon
+                  corps<br />
+                  Elles s'effacent, se renouvellent, mais ne me rendent rien<br />
+                  Je suis leur présentoir, mais pourtant pas leur sort
+                </p>
 
-        <div class="container-lg">
-
-            <div class="justify-content-center row">
-
-                <div class="col-xxl-10">
-
-                    <div class="text-center">
-
-                        <h2 class="font-weight-semi fs-40 fs-sm-60 mb-30 text-red">
-                            Contact
-                        </h2>
-    
-                        <p class="font-weight-bold text-gray-400">
-                            Vous désirez une collaboration ou organiser un shooting ? +32 472 91 35 53 
-
-                        </p>
-    
-                       
-						<p class="font-weight-bold">			
-						<a class="d-inline-flex align-items-center justify-content-center btn bg-orange border-0 btn btn-sm p-20 px-50 mt-20 shadow-none text-white top--hover " href="mailto:fb799591@skynet.be"
-						title="Contactez-nous">Contactez-moi</a>
-						
-						</p>
-						
-
-						
-                    </div>
-                
-
-                </div>
-
+                <p>
+                  Mon aventure d'actrice, ma paye me le rend bien<br />
+                  Mais tous les compromis, de ce rêve éreintant<br />
+                  N'en valent que peu l'enjeu, c'est ma vie qui déteint<br />
+                  Dans cette jeunesse brisée par ce travail errant
+                </p>
+              </div>
             </div>
 
+            <div class="fade-in-up">
+              <img
+                src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=800&q=80"
+                alt="Portrait artistique de mannequin professionnel"
+                class="w-full h-auto rounded-lg shadow-2xl"
+                loading="lazy"
+              />
+            </div>
+          </div>
+
+          <!-- SECOND POEM -->
+          <div class="mt-16 max-w-3xl mx-auto text-center fade-in-up">
+            <div
+              class="text-gray-400 font-inter text-base md:text-lg leading-relaxed space-y-4 italic"
+            >
+              <p>
+                Elle est si belle, Les flashs sont pour elle.<br />
+                Elle défile, le profil haut, Les regards se posent sur son
+                manteau.
+              </p>
+              <p>
+                D'un geste élégant, Elle l'enlève avec un bruissement.<br />
+                La couleur rouge étincelle, La lumière est sans pareille.
+              </p>
+              <p>
+                Son tour est déjà fini, Enhardie par son succès, elle sourit.<br />
+                On lui enlève ses accessoires, Sa jolie robe de moire.
+              </p>
+              <p>
+                Son visage est soudain pâle, Son souffle ressemble à un râle.<br />
+                Son ventre émet un petit bruit. Elle n'a rien mangé aujourd'hui.
+              </p>
+            </div>
+          </div>
         </div>
+      </section>
 
-    </section>
+      <!-- GALERIE SECTION -->
+      <section id="galerie" class="py-20 md:py-32 bg-black">
+        <div class="max-w-screen-xl mx-auto px-6">
+          <h2
+            class="font-cinzel text-4xl md:text-5xl font-bold text-white text-center mb-16 fade-in-up"
+          >
+            Portfolio
+          </h2>
 
-   
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Gallery Items with actual images from the HTML -->
+            <article class="gallery-item fade-in-up">
+              <img
+                src="web/img/gallery/shooting09-10-23-002.jpg"
+                alt="Shooting du 09/10/2023 - Portrait professionnel"
+                class="w-full h-auto object-cover"
+                loading="lazy"
+              />
+              <div class="gallery-overlay">
+                <span class="text-white font-inter text-sm">09/10/2023</span>
+              </div>
+            </article>
 
-    <!-- SCROLL TO TOP -->
-	<div class="js-scroll-top position-fixed rg-20 scroll-top">
+            <article class="gallery-item fade-in-up">
+              <img
+                src="web/img/gallery/shooting09-10-23-007.jpg"
+                alt="Shooting du 09/10/2023 - Séance photo artistique"
+                class="w-full h-auto object-cover"
+                loading="lazy"
+              />
+              <div class="gallery-overlay">
+                <span class="text-white font-inter text-sm">09/10/2023</span>
+              </div>
+            </article>
 
-		<button class="bg-red border-0 btn btn-sm js-btn-scroll p-0 shadow-none rounded-circle text-white wd-50" aria-label="Scroll to top button" title="Haut de la page" type="button">
-			<i class="fs-20 lh-20 mdi mdi-arrow-up"></i>
-		</button>
+            <article class="gallery-item fade-in-up">
+              <img
+                src="web/img/gallery/shooting09-10-23-008.jpg"
+                alt="Shooting du 09/10/2023 - Book photo mannequin"
+                class="w-full h-auto object-cover"
+                loading="lazy"
+              />
+              <div class="gallery-overlay">
+                <span class="text-white font-inter text-sm">09/10/2023</span>
+              </div>
+            </article>
 
-	</div>
+            <article class="gallery-item fade-in-up">
+              <img
+                src="web/img/gallery/shooting09-09-24-001.jpg"
+                alt="Shooting du 09/09/2024 - Portrait glamour"
+                class="w-full h-auto object-cover"
+                loading="lazy"
+              />
+              <div class="gallery-overlay">
+                <span class="text-white font-inter text-sm">09/09/2024</span>
+              </div>
+            </article>
 
-   
+            <article class="gallery-item fade-in-up">
+              <img
+                src="web/img/gallery/shooting09-09-24-002.jpg"
+                alt="Shooting du 09/09/2024 - Séance artistique"
+                class="w-full h-auto object-cover"
+                loading="lazy"
+              />
+              <div class="gallery-overlay">
+                <span class="text-white font-inter text-sm">09/09/2024</span>
+              </div>
+            </article>
 
-    <!-- JS -->
-       <script src="web/js/vendors-app.js"></script>
-    <script src="web/js/app.js"></script>
+            <article class="gallery-item fade-in-up">
+              <img
+                src="web/img/gallery/shooting09-10-23-003.jpg"
+                alt="Shooting du 09/10/2023 - Photo professionnelle"
+                class="w-full h-auto object-cover"
+                loading="lazy"
+              />
+              <div class="gallery-overlay">
+                <span class="text-white font-inter text-sm">09/10/2023</span>
+              </div>
+            </article>
 
-</body>
+            <article class="gallery-item fade-in-up">
+              <img
+                src="web/img/gallery/shooting09-09-24-101.jpg"
+                alt="Shooting du 09/09/2024 - Book mannequin"
+                class="w-full h-auto object-cover"
+                loading="lazy"
+              />
+              <div class="gallery-overlay">
+                <span class="text-white font-inter text-sm">09/09/2024</span>
+              </div>
+            </article>
 
+            <article class="gallery-item fade-in-up">
+              <img
+                src="web/img/gallery/shooting09-09-24-102.jpg"
+                alt="Shooting du 09/09/2024 - Portrait artistique"
+                class="w-full h-auto object-cover"
+                loading="lazy"
+              />
+              <div class="gallery-overlay">
+                <span class="text-white font-inter text-sm">09/09/2024</span>
+              </div>
+            </article>
+
+            <article class="gallery-item fade-in-up">
+              <img
+                src="web/img/gallery/shooting09-09-24-103.jpg"
+                alt="Shooting du 09/09/2024 - Séance photo mode"
+                class="w-full h-auto object-cover"
+                loading="lazy"
+              />
+              <div class="gallery-overlay">
+                <span class="text-white font-inter text-sm">09/09/2024</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT SECTION -->
+      <section
+        id="contact"
+        class="py-20 md:py-32 bg-gradient-to-b from-black to-gray-900"
+      >
+        <div class="max-w-screen-xl mx-auto px-6 text-center">
+          <h2
+            class="font-cinzel text-4xl md:text-5xl font-bold text-white mb-8 fade-in-up"
+          >
+            Contact
+          </h2>
+
+          <p
+            class="font-inter text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto fade-in-up"
+          >
+            Vous désirez une collaboration ou organiser un shooting ?
+          </p>
+
+          <div class="space-y-4 mb-10 fade-in-up">
+            <p class="font-inter text-xl text-white">
+              <a
+                href="tel:+32472913553"
+                class="hover:text-pink-500 transition-colors"
+                aria-label="Téléphone +32 472 91 35 53"
+              >
+                +32 472 91 35 53
+              </a>
+            </p>
+            <p class="font-inter text-xl text-white">
+              <a
+                href="mailto:fb799591@skynet.be"
+                class="hover:text-pink-500 transition-colors"
+                aria-label="Email fb799591@skynet.be"
+              >
+                fb799591@skynet.be
+              </a>
+            </p>
+          </div>
+
+          <a
+            href="mailto:fb799591@skynet.be"
+            class="btn-neon inline-block fade-in-up"
+            aria-label="Contactez-moi par email"
+          >
+            Contactez-moi
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-black border-t border-gray-800 py-8">
+      <div class="max-w-screen-xl mx-auto px-6 text-center">
+        <p class="font-inter text-gray-500 text-sm">
+          © 2025 Mannequin Belge. Tous droits réservés. designed par
+          maxsolving.com
+        </p>
+      </div>
+    </footer>
+
+    <!-- LIGHTBOX -->
+    <div
+      id="lightbox"
+      class="lightbox"
+      role="dialog"
+      aria-label="Lightbox pour agrandir les images"
+    >
+      <span class="lightbox-close" aria-label="Fermer la lightbox"
+        >&times;</span
+      >
+      <img id="lightbox-img" src="" alt="Image agrandie" />
+    </div>
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <script>
+      // GSAP ScrollTrigger Animations
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Fade In Up Elements
+      gsap.utils.toArray(".fade-in-up").forEach((element) => {
+        gsap.from(element, {
+          opacity: 0,
+          y: 50,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: element,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        });
+      });
+
+      // Mobile Menu Toggle
+      const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const mobileLinks = document.querySelectorAll(".mobile-link");
+
+      mobileMenuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      mobileLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.add("hidden");
+        });
+      });
+
+      // Lightbox Functionality
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImg = document.getElementById("lightbox-img");
+      const lightboxClose = document.querySelector(".lightbox-close");
+      const galleryItems = document.querySelectorAll(".gallery-item img");
+
+      galleryItems.forEach((item) => {
+        item.addEventListener("click", () => {
+          lightbox.classList.add("active");
+          lightboxImg.src = item.src;
+          lightboxImg.alt = item.alt;
+          document.body.style.overflow = "hidden";
+        });
+      });
+
+      lightboxClose.addEventListener("click", closeLightbox);
+      lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) closeLightbox();
+      });
+
+      function closeLightbox() {
+        lightbox.classList.remove("active");
+        document.body.style.overflow = "auto";
+      }
+
+      // ESC key to close lightbox
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && lightbox.classList.contains("active")) {
+          closeLightbox();
+        }
+      });
+
+      // Smooth Scroll
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        });
+      });
+    </script>
+  </body>
 </html>
