@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mannequin Belge | Modèle Photo Glamour & Artistique</title>
+    <meta
+      name="description"
+      content="Portfolio officiel. Modèle photo en Belgique spécialisée en shooting glamour, lingerie et nu artistique. Disponible pour collaborations photographes."
+    />
+    <meta
+      name="keywords"
+      content="modèle photo belgique, mannequin charme, shooting lingerie, book photo, collaboration photographe"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Mannequin Belge" />
+    <link rel="canonical" href="https://www.mannequinbelge.be/" />
+
+    <meta
+      property="og:title"
+      content="Mannequin Belge | Modèle Photo Glamour & Artistique"
+    />
+    <meta
+      property="og:description"
+      content="Portfolio officiel. Modèle photo en Belgique spécialisée en shooting glamour, lingerie et nu artistique."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:image"
+      content="https://www.mannequinbelge.be/images/share-cover.jpg"
+    />
+    <meta property="og:url" content="https://www.mannequinbelge.be/" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --color-dark: #050505;
+        --color-accent: #bd00ff; /* Violet Néon */
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: var(--color-dark);
+        color: #e5e5e5; /* Gris clair pour le texte */
+        /* Interdiction totale du défilement latéral */
+        overflow-x: hidden;
+      }
+
+      /* Définition de l'animation des "Blobs" de fond (subtile) */
+      @keyframes blob-movement {
+        0%,
+        100% {
+          transform: translate(0, 0) scale(1);
+        }
+        33% {
+          transform: translate(30vw, 20vh) scale(1.1);
+        }
+        66% {
+          transform: translate(-10vw, 40vh) scale(0.9);
+        }
+      }
+
+      .animated-blob {
+        position: absolute;
+        filter: blur(150px);
+        opacity: 0.2; /* Très subtil */
+        animation: blob-movement 25s infinite alternate;
+        pointer-events: none;
+        will-change: transform;
+      }
+
+      .blob-1 {
+        background-color: var(--color-accent);
+        width: 500px;
+        height: 500px;
+        top: -200px;
+        left: -200px;
+        animation-duration: 20s;
+      }
+
+      .blob-2 {
+        background-color: #ff0055; /* Rouge Lèvres */
+        width: 400px;
+        height: 400px;
+        bottom: -150px;
+        right: -150px;
+        animation-duration: 30s;
+      }
+
+      .neon-border {
+        box-shadow: 0 0 10px var(--color-accent), 0 0 20px var(--color-accent);
+        border: 1px solid var(--color-accent);
+      }
+
+      /* Styles pour le Lightbox (invisible par défaut) */
+      #lightbox {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.95);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 50;
+        cursor: pointer;
+      }
+
+      #lightbox-img {
+        max-width: 90%;
+        max-height: 90%;
+        object-fit: contain;
+      }
+
+      .text-neon-accent {
+        color: var(--color-accent);
+        text-shadow: 0 0 5px var(--color-accent);
+      }
+    </style>
+  </head>
+  <body class="antialiased overflow-x-hidden">
+    <div class="animated-blob blob-1 rounded-full"></div>
+    <div
+      class="animated-blob blob-2 rounded-full"
+      style="animation-delay: -10s"
+    ></div>
+
+    <header
+      id="header"
+      class="sticky top-0 z-40 w-full bg-black/50 backdrop-blur-md transition-shadow duration-300 shadow-xl"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between"
+      >
+        <a
+          href="#hero"
+          class="text-3xl font-bold tracking-widest text-white hover:text-neon-accent transition duration-300"
+          style="font-family: 'Cinzel', serif"
+        >
+          MANNEQUIN BELGE
+        </a>
+        <nav class="hidden md:flex space-x-8">
+          <a
+            href="#galerie"
+            class="text-sm font-medium hover:text-white transition duration-200 text-gray-400"
+            aria-label="Lien vers la section Shooting"
+            >SHOOTING</a
+          >
+          <a
+            href="#philosophie"
+            class="text-sm font-medium hover:text-white transition duration-200 text-gray-400"
+            aria-label="Lien vers la section Philosophie"
+            >PHILOSOPHIE</a
+          >
+          <a
+            href="#contact"
+            class="text-sm font-medium hover:text-white transition duration-200 text-gray-400"
+            aria-label="Lien vers la section Contact"
+            >CONTACT</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section
+        id="hero"
+        class="relative min-h-screen flex items-center justify-center p-4 overflow-hidden"
+      >
+        <img
+          src="https://source.unsplash.com/random/1600x1200/?dark,fashion,portrait"
+          alt="Mannequin Belge - Portrait de mode glamour"
+          class="absolute inset-0 w-full h-full object-cover opacity-30"
+          loading="eager"
+        />
+
+        <div class="relative z-10 text-center max-w-4xl mx-auto">
+          <h1
+            id="hero-title"
+            class="text-6xl sm:text-8xl lg:text-9xl font-bold mb-4 text-white uppercase tracking-tighter opacity-0"
+            style="font-family: 'Cinzel', serif"
+          >
+            L'ART DE L'ÉPHÉMÈRE
+          </h1>
+          <p
+            id="hero-subtitle"
+            class="text-xl sm:text-2xl text-gray-300 mt-4 font-light opacity-0"
+          >
+            L'élégance de la séduction et de l'éphémère.
+          </p>
+          <a
+            id="hero-cta"
+            href="#galerie"
+            class="js-fade-up mt-10 inline-block px-10 py-3 text-sm font-semibold text-white uppercase tracking-widest bg-transparent border-2 hover:bg-white hover:text-black transition duration-500 ease-in-out neon-border opacity-0"
+            aria-label="Voir le book"
+          >
+            Voir le Book
+          </a>
+        </div>
+      </section>
+
+      <section id="philosophie" class="py-24 sm:py-32 bg-black/70">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+          <h2
+            class="text-4xl font-bold mb-16 text-center text-white js-fade-up"
+            style="font-family: 'Cinzel', serif"
+          >
+            Philosophie
+          </h2>
+
+          <div class="space-y-20 lg:space-y-32">
+            <article class="lg:flex lg:items-center lg:space-x-12">
+              <div class="lg:w-1/2 mb-10 lg:mb-0 js-fade-up">
+                <img
+                  src="https://source.unsplash.com/random/800x600/?dark,fashion,lingerie"
+                  alt="Image illustrant le travail de la modèle"
+                  class="w-full h-auto rounded-lg shadow-2xl"
+                  loading="lazy"
+                />
+              </div>
+              <div class="lg:w-1/2 js-fade-up">
+                <p class="text-lg lg:text-xl italic text-gray-300 mb-4">
+                  "Du matin jusqu’au soir mon corps est mon travail... Je porte
+                  bien l’éphémère, ma beauté m’appartient."
+                </p>
+                <p class="text-gray-500 text-sm">— Mannequin Belge</p>
+              </div>
+            </article>
+
+            <article
+              class="lg:flex lg:items-center lg:space-x-12 flex-col-reverse lg:flex-row"
+            >
+              <div class="lg:w-1/2 mb-10 lg:mb-0 js-fade-up">
+                <p class="text-lg lg:text-xl italic text-gray-300 mb-4">
+                  "Je suis leur présentoir, mais pourtant pas leur sort... Je
+                  mange peu, souris tant, mais je n’suis pas heureuse."
+                </p>
+                <p class="text-gray-500 text-sm">— Mannequin Belge</p>
+              </div>
+              <div class="lg:w-1/2 js-fade-up">
+                <img
+                  src="https://source.unsplash.com/random/800x600/?dark,portrait,glamour"
+                  alt="Image montrant l'expression de la modèle"
+                  class="w-full h-auto rounded-lg shadow-2xl"
+                  loading="lazy"
+                />
+              </div>
+            </article>
+
+            <article class="text-center max-w-3xl mx-auto js-fade-up">
+              <p
+                class="text-2xl lg:text-3xl italic text-neon-accent mb-6 font-thin"
+              >
+                "Quand tout sera fini... Mon book et mes albums achèveront cette
+                vie."
+              </p>
+              <p class="text-gray-500 text-sm">— L'héritage d'une image.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="galerie" class="py-24 sm:py-32">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+          <h2
+            class="text-4xl font-bold mb-16 text-center text-white js-fade-up"
+            style="font-family: 'Cinzel', serif"
+          >
+            Le Book
+          </h2>
+
+          <div
+            class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+            id="gallery-grid"
+          >
+            <div
+              class="image-item aspect-square overflow-hidden rounded-lg cursor-pointer transform hover:scale-[1.02] transition duration-300 js-fade-up"
+            >
+              <img
+                class="w-full h-full object-cover"
+                src="https://source.unsplash.com/random/500x700/?model,dark,purple"
+                alt="Photo de la modèle 1"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="image-item aspect-[3/4] overflow-hidden rounded-lg cursor-pointer transform hover:scale-[1.02] transition duration-300 js-fade-up"
+            >
+              <img
+                class="w-full h-full object-cover"
+                src="https://source.unsplash.com/random/600x800/?model,dark,glamour"
+                alt="Photo de la modèle 2"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="image-item aspect-[4/3] col-span-2 overflow-hidden rounded-lg cursor-pointer transform hover:scale-[1.01] transition duration-300 js-fade-up"
+            >
+              <img
+                class="w-full h-full object-cover"
+                src="https://source.unsplash.com/random/1200x900/?model,dark,fashion"
+                alt="Photo de la modèle 3"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="image-item aspect-[2/3] overflow-hidden rounded-lg cursor-pointer transform hover:scale-[1.02] transition duration-300 js-fade-up"
+            >
+              <img
+                class="w-full h-full object-cover"
+                src="https://source.unsplash.com/random/700x1000/?model,dark,lingerie"
+                alt="Photo de la modèle 4"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="image-item aspect-square overflow-hidden rounded-lg cursor-pointer transform hover:scale-[1.02] transition duration-300 js-fade-up"
+            >
+              <img
+                class="w-full h-full object-cover"
+                src="https://source.unsplash.com/random/500x500/?model,dark,portrait"
+                alt="Photo de la modèle 5"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="image-item aspect-[4/3] overflow-hidden rounded-lg cursor-pointer transform hover:scale-[1.02] transition duration-300 js-fade-up"
+            >
+              <img
+                class="w-full h-full object-cover"
+                src="https://source.unsplash.com/random/800x600/?model,dark,red"
+                alt="Photo de la modèle 6"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="image-item aspect-[3/4] overflow-hidden rounded-lg cursor-pointer transform hover:scale-[1.02] transition duration-300 js-fade-up"
+            >
+              <img
+                class="w-full h-full object-cover"
+                src="https://source.unsplash.com/random/600x800/?model,dark,editorial"
+                alt="Photo de la modèle 7"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="image-item aspect-square col-span-2 md:col-span-1 overflow-hidden rounded-lg cursor-pointer transform hover:scale-[1.02] transition duration-300 js-fade-up"
+            >
+              <img
+                class="w-full h-full object-cover"
+                src="https://source.unsplash.com/random/700x700/?model,dark,sensual"
+                alt="Photo de la modèle 8"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="py-24 sm:py-32 bg-black/70">
+        <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+          <h2
+            class="text-5xl font-bold mb-8 text-white js-fade-up"
+            style="font-family: 'Cinzel', serif"
+          >
+            Collaborer
+          </h2>
+          <p class="text-xl text-gray-400 mb-12 js-fade-up">
+            Vous avez un projet photo, vidéo, ou une collaboration artistique ?
+            Contactez-moi directement.
+          </p>
+
+          <div
+            class="flex flex-col sm:flex-row justify-center space-y-6 sm:space-y-0 sm:space-x-8 js-fade-up"
+          >
+            <a
+              href="mailto:fb799591@skynet.be"
+              class="inline-block px-8 py-3 text-sm font-semibold text-white uppercase tracking-widest border-2 border-white neon-border transition duration-300 hover:bg-white hover:text-black"
+              aria-label="Envoyer un email à la modèle"
+            >
+              M'envoyer un email
+            </a>
+            <a
+              href="tel:+32472913553"
+              class="inline-block px-8 py-3 text-sm font-semibold text-gray-300 uppercase tracking-widest border-2 border-gray-500 hover:border-neon-accent hover:text-white transition duration-300"
+              aria-label="Appeler la modèle"
+            >
+              +32 472 91 35 53
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="py-8 border-t border-gray-800">
+      <div
+        class="max-w-7xl mx-auto px-6 lg:px-8 text-center text-sm text-gray-600"
+      >
+        <p>&copy; 2023 Mannequin Belge. Tous droits réservés.</p>
+        <p class="mt-1">
+          Design Futuriste par [Votre Nom/Studio]. Propulsé par GSAP & Tailwind.
+        </p>
+      </div>
+    </footer>
+
+    <div id="lightbox">
+      <img
+        id="lightbox-img"
+        src=""
+        alt="Image en grand plan"
+        aria-modal="true"
+      />
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script>
+      // Enregistrement des plugins GSAP
+      gsap.registerPlugin(ScrollTrigger);
+
+      // ------------------------------------
+      // 1. ANIMATION GSAP - HERO SECTION
+      // ------------------------------------
+      gsap
+        .timeline()
+        .to("#hero-title", {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power2.out",
+        })
+        .to(
+          "#hero-title",
+          { y: -20, duration: 2, repeat: -1, yoyo: true, ease: "sine.inOut" },
+          "<"
+        )
+        .to(
+          "#hero-subtitle",
+          { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
+          "-=0.5"
+        )
+        .to(
+          "#hero-cta",
+          { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
+          "-=0.3"
+        );
+
+      // ------------------------------------
+      // 2. ANIMATION GSAP - SCROLLTRIGGER (Fade In Up général)
+      // ------------------------------------
+      document.querySelectorAll(".js-fade-up").forEach((element) => {
+        gsap.from(element, {
+          scrollTrigger: {
+            trigger: element,
+            start: "top 85%", // Déclenche quand l'élément arrive à 85% de la fenêtre
+            toggleActions: "play none none none",
+          },
+          opacity: 0,
+          y: 50,
+          duration: 1,
+          ease: "power3.out",
+        });
+      });
+
+      // ------------------------------------
+      // 3. LOGIQUE JAVASCRIPT - LIGHTBOX
+      // ------------------------------------
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImg = document.getElementById("lightbox-img");
+      const galleryItems = document.querySelectorAll(".image-item img");
+
+      galleryItems.forEach((img) => {
+        img.addEventListener("click", () => {
+          lightboxImg.src = img.src; // Utilise la source actuelle
+          lightbox.style.display = "flex";
+          document.body.style.overflow = "hidden"; // Empêche le scroll en arrière-plan
+        });
+      });
+
+      // Fermer le Lightbox au clic sur l'arrière-plan ou l'image
+      lightbox.addEventListener("click", () => {
+        lightbox.style.display = "none";
+        document.body.style.overflow = "auto";
+      });
+    </script>
+  </body>
+</html>

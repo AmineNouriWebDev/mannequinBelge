@@ -12,9 +12,9 @@
     />
     <meta
       name="keywords"
-      content="modèle photo belgique, mannequin charme, shooting lingerie, book photo, collaboration photographe"
+      content="modèle photo belgique, mannequin charme, shooting lingerie, book photo, collaboration photographe, mannequin belgique, modèle artistique"
     />
-    <meta name="author" content="maxsolving.com" />
+    <meta name="author" content="Nicolas Pirotte Infographiste" />
 
     <!-- OPEN GRAPH -->
     <meta
@@ -37,6 +37,23 @@
 
     <!-- FAVICON -->
     <link rel="icon" type="image/x-icon" href="web/img/favicon/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="web/img/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="web/img/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="web/img/favicon/favicon-16x16.png"
+    />
 
     <!-- FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -56,6 +73,21 @@
               cinzel: ["Cinzel", "serif"],
               inter: ["Inter", "sans-serif"],
             },
+            animation: {
+              "fade-in": "fadeIn 0.8s ease-out",
+              "slide-up": "slideUp 0.6s ease-out",
+              "pulse-slow": "pulse 3s infinite",
+            },
+            keyframes: {
+              fadeIn: {
+                "0%": { opacity: "0" },
+                "100%": { opacity: "1" },
+              },
+              slideUp: {
+                "0%": { transform: "translateY(20px)", opacity: "0" },
+                "100%": { transform: "translateY(0)", opacity: "1" },
+              },
+            },
           },
         },
       };
@@ -68,11 +100,34 @@
         box-sizing: border-box;
       }
 
+      html,
       body {
         overflow-x: hidden;
-        background: #050505;
-        color: #e5e5e5;
+        background: #000000 !important;
+        color: #ffffff !important;
         font-family: "Inter", sans-serif;
+        scroll-behavior: smooth;
+      }
+
+      /* FORCE TEXT VISIBILITY */
+      body * {
+        color: inherit;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        color: #ffffff !important;
+      }
+
+      p,
+      span,
+      a,
+      li {
+        color: #e5e5e5 !important;
       }
 
       /* ANIMATED BACKGROUND BLOBS */
@@ -142,14 +197,25 @@
       /* GLASSMORPHISM HEADER */
       header {
         backdrop-filter: blur(20px);
-        background: rgba(5, 5, 5, 0.7);
+        background: rgba(0, 0, 0, 0.8) !important;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      header.scrolled {
+        background: rgba(0, 0, 0, 0.95) !important;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      header a {
+        color: #ffffff !important;
       }
 
       /* NEON BUTTON */
       .btn-neon {
         position: relative;
-        color: #fff;
+        display: inline-block;
+        color: #ffffff !important;
         border: 2px solid #ff006e;
         padding: 14px 40px;
         font-weight: 600;
@@ -157,24 +223,151 @@
         letter-spacing: 2px;
         transition: all 0.4s;
         box-shadow: 0 0 20px rgba(255, 0, 110, 0.5);
+        text-decoration: none;
+        background: transparent;
+        border-radius: 4px;
+        overflow: hidden;
+        z-index: 1;
+      }
+
+      .btn-neon::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: left 0.7s ease;
+        z-index: -1;
+      }
+
+      .btn-neon:hover::before {
+        left: 100%;
       }
 
       .btn-neon:hover {
-        background: #ff006e;
+        background: #ff006e !important;
         box-shadow: 0 0 40px rgba(255, 0, 110, 0.8),
           0 0 60px rgba(255, 0, 110, 0.5);
         transform: translateY(-2px);
       }
 
-      /* HERO IMAGE */
+      /* HERO IMAGE WITH RESPONSIVE SOURCES */
       .hero-image {
         position: relative;
         height: 100vh;
-        background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)),
-          url("https://images.unsplash.com/photo-1509631179647-0177331693ae?w=1920&q=80");
+        background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7));
         background-size: cover;
         background-position: center;
         background-attachment: fixed;
+        background-repeat: no-repeat;
+      }
+
+      /* Pour mobile : utiliser l'image portrait (1696x2528) */
+      .hero-image {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.4),
+            rgba(0, 0, 0, 0.7)
+          ),
+          url("./img/hero-header.png");
+      }
+
+      /* Pour desktop : utiliser une image landscape */
+      @media (min-width: 1024px) {
+        .hero-image {
+          background-image: linear-gradient(
+              rgba(0, 0, 0, 0.4),
+              rgba(0, 0, 0, 0.7)
+            ),
+            url("./img/hero-header-desktop.jpg");
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero-image {
+          background-attachment: scroll;
+        }
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 10;
+      }
+
+      .hero-title {
+        color: #ffffff !important;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+        animation: fadeIn 1.2s ease-out;
+      }
+
+      .hero-subtitle {
+        color: #e5e5e5 !important;
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+        animation: slideUp 1s ease-out 0.3s both;
+      }
+
+      /* GALLERY MASONRY LAYOUT */
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
+        padding: 0;
+      }
+
+      @media (min-width: 640px) {
+        .gallery-grid {
+          grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .gallery-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      @media (min-width: 1280px) {
+        .gallery-grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+
+      /* GALLERY FILTER */
+      .gallery-filter {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+      }
+
+      .filter-btn {
+        padding: 8px 20px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: transparent;
+        color: #e5e5e5;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-family: "Inter", sans-serif;
+        font-size: 14px;
+      }
+
+      .filter-btn:hover {
+        border-color: #ff006e;
+        color: #ff006e;
+      }
+
+      .filter-btn.active {
+        background: #ff006e;
+        border-color: #ff006e;
+        color: white;
       }
 
       /* GALLERY HOVER EFFECT */
@@ -183,14 +376,22 @@
         overflow: hidden;
         cursor: pointer;
         transition: transform 0.3s ease;
+        border-radius: 8px;
+        aspect-ratio: 3/4;
+        background: #111;
       }
 
       .gallery-item:hover {
-        transform: scale(1.05);
+        transform: scale(1.03);
+        box-shadow: 0 10px 30px rgba(255, 0, 110, 0.2);
       }
 
       .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
         transition: transform 0.5s ease;
+        display: block;
       }
 
       .gallery-item:hover img {
@@ -208,11 +409,19 @@
         padding: 20px;
       }
 
+      .gallery-overlay span {
+        color: #ffffff !important;
+        font-size: 14px;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 4px 10px;
+        border-radius: 4px;
+      }
+
       .gallery-item:hover .gallery-overlay {
         opacity: 1;
       }
 
-      /* LIGHTBOX */
+      /* LIGHTBOX COMPLÈTE */
       .lightbox {
         display: none;
         position: fixed;
@@ -220,37 +429,121 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.95);
+        background: rgba(0, 0, 0, 0.98);
         z-index: 9999;
         align-items: center;
         justify-content: center;
         padding: 20px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
       }
 
       .lightbox.active {
         display: flex;
+        opacity: 1;
+        animation: fadeIn 0.3s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .lightbox-container {
+        position: relative;
+        max-width: 90vw;
+        max-height: 90vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
       .lightbox img {
-        max-width: 90%;
-        max-height: 90vh;
+        max-width: 100%;
+        max-height: 85vh;
         object-fit: contain;
+        border-radius: 8px;
+        box-shadow: 0 0 50px rgba(255, 255, 255, 0.1);
       }
 
       .lightbox-close {
         position: absolute;
-        top: 30px;
-        right: 30px;
-        color: white;
-        font-size: 40px;
+        top: 20px;
+        right: 20px;
+        background: #ff006e;
+        color: white !important;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        font-weight: bold;
         cursor: pointer;
-        z-index: 10000;
+        z-index: 10001;
+        border: 2px solid white;
+        transition: all 0.3s ease;
+        box-shadow: 0 0 20px rgba(255, 0, 110, 0.5);
       }
 
-      /* FADE IN UP ANIMATION */
-      .fade-in-up {
-        opacity: 0;
-        transform: translateY(50px);
+      .lightbox-close:hover {
+        background: #fff;
+        color: #ff006e !important;
+        transform: rotate(90deg) scale(1.1);
+        box-shadow: 0 0 30px rgba(255, 0, 110, 0.8);
+      }
+
+      .lightbox-counter {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: white !important;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 10px 20px;
+        border-radius: 25px;
+        font-family: "Inter", sans-serif;
+        font-size: 16px;
+        z-index: 10001;
+        backdrop-filter: blur(10px);
+      }
+
+      .lightbox-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 0, 110, 0.8);
+        color: white !important;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 2px solid white;
+        z-index: 10001;
+      }
+
+      .lightbox-nav:hover {
+        background: #ff006e;
+        transform: translateY(-50%) scale(1.1);
+        box-shadow: 0 0 20px rgba(255, 0, 110, 0.8);
+      }
+
+      .lightbox-prev {
+        left: 20px;
+      }
+
+      .lightbox-next {
+        right: 20px;
       }
 
       /* SCROLL INDICATOR */
@@ -262,6 +555,10 @@
         animation: bounce 2s infinite;
       }
 
+      .scroll-indicator svg {
+        color: #ffffff !important;
+      }
+
       @keyframes bounce {
         0%,
         100% {
@@ -270,6 +567,112 @@
         50% {
           transform: translateX(-50%) translateY(-10px);
         }
+      }
+
+      /* TEXT STYLES */
+      .text-white-force {
+        color: #ffffff !important;
+      }
+
+      .text-gray-force {
+        color: #d1d5db !important;
+      }
+
+      .poem-text {
+        color: #b8b8b8 !important;
+        line-height: 1.8;
+      }
+
+      /* LOADING ANIMATION */
+      .loading {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: #ff006e;
+        animation: spin 1s ease-in-out infinite;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* PROGRESS BAR */
+      .progress-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 3px;
+        background: linear-gradient(90deg, #ff006e, #8338ec);
+        z-index: 1000;
+        transition: width 0.3s ease;
+      }
+
+      /* ANIMATED SECTIONS */
+      .section-hidden {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease;
+      }
+
+      .section-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* FORM STYLES */
+      .contact-form input,
+      .contact-form textarea {
+        width: 100%;
+        padding: 12px 16px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        color: white;
+        font-family: "Inter", sans-serif;
+        transition: all 0.3s ease;
+      }
+
+      .contact-form input:focus,
+      .contact-form textarea:focus {
+        outline: none;
+        border-color: #ff006e;
+        box-shadow: 0 0 20px rgba(255, 0, 110, 0.3);
+      }
+
+      .contact-form textarea {
+        min-height: 150px;
+        resize: vertical;
+      }
+
+      /* SOCIAL LINKS */
+      .social-links {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        margin-top: 30px;
+      }
+
+      .social-link {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .social-link:hover {
+        background: #ff006e;
+        transform: translateY(-3px);
       }
     </style>
   </head>
@@ -282,14 +685,17 @@
       <div class="blob blob-3"></div>
     </div>
 
+    <!-- PROGRESS BAR -->
+    <div class="progress-bar" id="progressBar"></div>
+
     <!-- HEADER -->
-    <header class="fixed top-0 w-full z-50">
+    <header class="fixed top-0 w-full z-50" id="mainHeader">
       <nav
         class="max-w-screen-xl mx-auto px-6 py-4 flex justify-between items-center"
       >
         <a
           href="#"
-          class="font-cinzel text-2xl md:text-3xl font-bold tracking-wider text-white"
+          class="font-cinzel text-2xl md:text-3xl font-bold tracking-wider text-white-force"
           aria-label="Mannequin Belge - Accueil"
         >
           MANNEQUIN BELGE
@@ -299,7 +705,7 @@
           <li>
             <a
               href="#philosophie"
-              class="text-gray-300 hover:text-white transition-colors"
+              class="text-white-force hover:text-pink-400 transition-colors"
               aria-label="Voir la philosophie"
               >Philosophie</a
             >
@@ -307,7 +713,7 @@
           <li>
             <a
               href="#galerie"
-              class="text-gray-300 hover:text-white transition-colors"
+              class="text-white-force hover:text-pink-400 transition-colors"
               aria-label="Voir la galerie photo"
               >Galerie</a
             >
@@ -315,7 +721,7 @@
           <li>
             <a
               href="#contact"
-              class="text-gray-300 hover:text-white transition-colors"
+              class="text-white-force hover:text-pink-400 transition-colors"
               aria-label="Me contacter"
               >Contact</a
             >
@@ -325,7 +731,7 @@
         <!-- MOBILE MENU BUTTON -->
         <button
           id="mobileMenuBtn"
-          class="md:hidden text-white text-2xl"
+          class="md:hidden text-white-force text-2xl z-50"
           aria-label="Menu mobile"
         >
           ☰
@@ -335,60 +741,65 @@
       <!-- MOBILE MENU -->
       <div
         id="mobileMenu"
-        class="hidden md:hidden bg-black/90 backdrop-blur-lg"
+        class="hidden md:hidden fixed top-0 left-0 w-full h-full bg-black/95 backdrop-blur-lg z-40"
       >
-        <ul class="flex flex-col items-center gap-6 py-8 font-inter">
-          <li>
-            <a
-              href="#philosophie"
-              class="text-gray-300 hover:text-white transition-colors text-lg mobile-link"
-              >Philosophie</a
-            >
-          </li>
-          <li>
-            <a
-              href="#galerie"
-              class="text-gray-300 hover:text-white transition-colors text-lg mobile-link"
-              >Galerie</a
-            >
-          </li>
-          <li>
-            <a
-              href="#contact"
-              class="text-gray-300 hover:text-white transition-colors text-lg mobile-link"
-              >Contact</a
-            >
-          </li>
-        </ul>
+        <div class="flex flex-col items-center justify-center h-full">
+          <button
+            id="closeMobileMenu"
+            class="absolute top-6 right-6 text-white-force text-3xl"
+            aria-label="Fermer le menu"
+          >
+            ×
+          </button>
+          <ul class="flex flex-col items-center gap-8 font-inter">
+            <li>
+              <a
+                href="#philosophie"
+                class="text-white-force hover:text-pink-400 transition-colors text-2xl mobile-link py-2"
+                >Philosophie</a
+              >
+            </li>
+            <li>
+              <a
+                href="#galerie"
+                class="text-white-force hover:text-pink-400 transition-colors text-2xl mobile-link py-2"
+                >Galerie</a
+              >
+            </li>
+            <li>
+              <a
+                href="#contact"
+                class="text-white-force hover:text-pink-400 transition-colors text-2xl mobile-link py-2"
+                >Contact</a
+              >
+            </li>
+          </ul>
+        </div>
       </div>
     </header>
 
     <main class="relative z-10">
       <!-- HERO SECTION -->
       <section class="hero-image flex items-center justify-center">
-        <div class="text-center px-6">
+        <div class="text-center px-6 hero-content">
           <h1
-            class="font-cinzel text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 fade-in-up"
+            class="font-cinzel text-5xl md:text-7xl lg:text-8xl font-bold hero-title mb-6"
           >
             L'ART DE L'ÉPHÉMÈRE
           </h1>
           <p
-            class="font-inter text-lg md:text-2xl text-gray-300 mb-10 max-w-2xl mx-auto fade-in-up"
+            class="font-inter text-lg md:text-2xl hero-subtitle mb-10 max-w-2xl mx-auto"
           >
             Entre ombre et lumière, chaque instant capturé devient éternité
           </p>
-          <a
-            href="#galerie"
-            class="btn-neon inline-block fade-in-up"
-            aria-label="Voir mon book photo"
-          >
+          <a href="#galerie" class="btn-neon" aria-label="Voir mon book photo">
             Voir le Book
           </a>
         </div>
 
         <div class="scroll-indicator">
           <svg
-            class="w-6 h-10 text-white"
+            class="w-6 h-10"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -404,21 +815,18 @@
       </section>
 
       <!-- PHILOSOPHIE SECTION -->
-      <section
-        id="philosophie"
-        class="py-20 md:py-32 bg-gradient-to-b from-black to-gray-900"
-      >
+      <section id="philosophie" class="py-20 md:py-32 bg-black section-hidden">
         <div class="max-w-screen-xl mx-auto px-6">
           <div class="grid md:grid-cols-2 gap-12 items-center">
-            <div class="fade-in-up">
+            <div class="animate-fade-in">
               <h2
-                class="font-cinzel text-4xl md:text-5xl font-bold text-white mb-8"
+                class="font-cinzel text-4xl md:text-5xl font-bold text-white-force mb-8"
               >
                 Ma Philosophie
               </h2>
 
               <div
-                class="text-gray-400 font-inter text-base md:text-lg leading-relaxed space-y-6 italic"
+                class="font-inter text-base md:text-lg leading-relaxed space-y-6 italic poem-text"
               >
                 <p>
                   Du matin jusqu'au soir mon corps est mon travail<br />
@@ -444,20 +852,20 @@
               </div>
             </div>
 
-            <div class="fade-in-up">
+            <div class="animate-slide-up">
               <img
-                src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=800&q=80"
+                src="./img/photo-philosophy.png"
                 alt="Portrait artistique de mannequin professionnel"
-                class="w-full h-auto rounded-lg shadow-2xl"
+                class="w-full h-auto rounded-lg shadow-2xl transform transition-transform duration-500 hover:scale-105"
                 loading="lazy"
               />
             </div>
           </div>
 
           <!-- SECOND POEM -->
-          <div class="mt-16 max-w-3xl mx-auto text-center fade-in-up">
+          <div class="mt-16 max-w-3xl mx-auto text-center animate-fade-in">
             <div
-              class="text-gray-400 font-inter text-base md:text-lg leading-relaxed space-y-4 italic"
+              class="font-inter text-base md:text-lg leading-relaxed space-y-4 italic poem-text"
             >
               <p>
                 Elle est si belle, Les flashs sont pour elle.<br />
@@ -481,185 +889,755 @@
         </div>
       </section>
 
-      <!-- GALERIE SECTION -->
-      <section id="galerie" class="py-20 md:py-32 bg-black">
+      <!-- GALERIE SECTION - 36 PHOTOS -->
+      <section
+        id="galerie"
+        class="py-20 md:py-32 bg-gradient-to-b from-black to-gray-900 section-hidden"
+      >
         <div class="max-w-screen-xl mx-auto px-6">
           <h2
-            class="font-cinzel text-4xl md:text-5xl font-bold text-white text-center mb-16 fade-in-up"
+            class="font-cinzel text-4xl md:text-5xl font-bold text-white-force text-center mb-8"
           >
             Portfolio
           </h2>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Gallery Items with actual images from the HTML -->
-            <article class="gallery-item fade-in-up">
+          <!-- FILTER -->
+          <div class="gallery-filter mb-12">
+            <button class="filter-btn active" data-filter="all">
+              Toutes les photos
+            </button>
+            <button class="filter-btn" data-filter="2023">2023</button>
+            <button class="filter-btn" data-filter="2024">2024</button>
+            <button class="filter-btn" data-filter="glamour">Glamour</button>
+            <button class="filter-btn" data-filter="artistique">
+              Artistique
+            </button>
+          </div>
+
+          <!-- GALLERY GRID -->
+          <div class="gallery-grid">
+            <!-- 2024 Photos -->
+            <article
+              class="gallery-item"
+              data-year="2024"
+              data-category="glamour"
+            >
               <img
-                src="web/img/gallery/shooting09-10-23-002.jpg"
-                alt="Shooting du 09/10/2023 - Portrait professionnel"
-                class="w-full h-auto object-cover"
+                src="./img/gallerie/shooting09-09-24-001.jpg"
+                alt="Shooting 09/09/2024 - Portrait glamour"
                 loading="lazy"
               />
               <div class="gallery-overlay">
-                <span class="text-white font-inter text-sm">09/10/2023</span>
+                <span class="font-inter text-sm">09/09/2024 - Glamour</span>
               </div>
             </article>
 
-            <article class="gallery-item fade-in-up">
+            <article
+              class="gallery-item"
+              data-year="2024"
+              data-category="artistique"
+            >
               <img
-                src="web/img/gallery/shooting09-10-23-007.jpg"
-                alt="Shooting du 09/10/2023 - Séance photo artistique"
-                class="w-full h-auto object-cover"
+                src="./img/gallerie/shooting09-09-24-002.jpg"
+                alt="Shooting 09/09/2024 - Séance artistique"
                 loading="lazy"
               />
               <div class="gallery-overlay">
-                <span class="text-white font-inter text-sm">09/10/2023</span>
+                <span class="font-inter text-sm">09/09/2024 - Artistique</span>
               </div>
             </article>
 
-            <article class="gallery-item fade-in-up">
+            <article
+              class="gallery-item"
+              data-year="2024"
+              data-category="glamour"
+            >
               <img
-                src="web/img/gallery/shooting09-10-23-008.jpg"
-                alt="Shooting du 09/10/2023 - Book photo mannequin"
-                class="w-full h-auto object-cover"
+                src="./img/gallerie/shooting09-09-24-101.jpg"
+                alt="Shooting 09/09/2024 - Book photo"
                 loading="lazy"
               />
               <div class="gallery-overlay">
-                <span class="text-white font-inter text-sm">09/10/2023</span>
+                <span class="font-inter text-sm">09/09/2024 - Glamour</span>
               </div>
             </article>
 
-            <article class="gallery-item fade-in-up">
+            <article
+              class="gallery-item"
+              data-year="2024"
+              data-category="artistique"
+            >
               <img
-                src="web/img/gallery/shooting09-09-24-001.jpg"
-                alt="Shooting du 09/09/2024 - Portrait glamour"
-                class="w-full h-auto object-cover"
+                src="./img/gallerie/shooting09-09-24-102.jpg"
+                alt="Shooting 09/09/2024 - Portrait artistique"
                 loading="lazy"
               />
               <div class="gallery-overlay">
-                <span class="text-white font-inter text-sm">09/09/2024</span>
+                <span class="font-inter text-sm">09/09/2024 - Artistique</span>
               </div>
             </article>
 
-            <article class="gallery-item fade-in-up">
+            <article
+              class="gallery-item"
+              data-year="2024"
+              data-category="glamour"
+            >
               <img
-                src="web/img/gallery/shooting09-09-24-002.jpg"
-                alt="Shooting du 09/09/2024 - Séance artistique"
-                class="w-full h-auto object-cover"
+                src="./img/gallerie/shooting09-09-24-103.jpg"
+                alt="Shooting 09/09/2024 - Séance photo mode"
                 loading="lazy"
               />
               <div class="gallery-overlay">
-                <span class="text-white font-inter text-sm">09/09/2024</span>
+                <span class="font-inter text-sm">09/09/2024 - Glamour</span>
               </div>
             </article>
 
-            <article class="gallery-item fade-in-up">
+            <article
+              class="gallery-item"
+              data-year="2024"
+              data-category="artistique"
+            >
               <img
-                src="web/img/gallery/shooting09-10-23-003.jpg"
-                alt="Shooting du 09/10/2023 - Photo professionnelle"
-                class="w-full h-auto object-cover"
+                src="./img/gallerie/shooting09-09-24-104.jpg"
+                alt="Shooting 09/09/2024 - Portfolio photo"
                 loading="lazy"
               />
               <div class="gallery-overlay">
-                <span class="text-white font-inter text-sm">09/10/2023</span>
+                <span class="font-inter text-sm">09/09/2024 - Artistique</span>
               </div>
             </article>
 
-            <article class="gallery-item fade-in-up">
+            <article
+              class="gallery-item"
+              data-year="2024"
+              data-category="glamour"
+            >
               <img
-                src="web/img/gallery/shooting09-09-24-101.jpg"
-                alt="Shooting du 09/09/2024 - Book mannequin"
-                class="w-full h-auto object-cover"
+                src="./img/gallerie/shooting09-09-24-105.jpg"
+                alt="Shooting 09/09/2024 - Séance glamour"
                 loading="lazy"
               />
               <div class="gallery-overlay">
-                <span class="text-white font-inter text-sm">09/09/2024</span>
+                <span class="font-inter text-sm">09/09/2024 - Glamour</span>
               </div>
             </article>
 
-            <article class="gallery-item fade-in-up">
+            <article
+              class="gallery-item"
+              data-year="2024"
+              data-category="artistique"
+            >
               <img
-                src="web/img/gallery/shooting09-09-24-102.jpg"
-                alt="Shooting du 09/09/2024 - Portrait artistique"
-                class="w-full h-auto object-cover"
+                src="./img/gallerie/shooting09-09-24-106.jpg"
+                alt="Shooting 09/09/2024 - Book professionnel"
                 loading="lazy"
               />
               <div class="gallery-overlay">
-                <span class="text-white font-inter text-sm">09/09/2024</span>
+                <span class="font-inter text-sm">09/09/2024 - Artistique</span>
               </div>
             </article>
 
-            <article class="gallery-item fade-in-up">
+            <article
+              class="gallery-item"
+              data-year="2024"
+              data-category="glamour"
+            >
               <img
-                src="web/img/gallery/shooting09-09-24-103.jpg"
-                alt="Shooting du 09/09/2024 - Séance photo mode"
-                class="w-full h-auto object-cover"
+                src="./img/gallerie/shooting09-09-24-107.jpg"
+                alt="Shooting 09/09/2024 - Portrait mode"
                 loading="lazy"
               />
               <div class="gallery-overlay">
-                <span class="text-white font-inter text-sm">09/09/2024</span>
+                <span class="font-inter text-sm">09/09/2024 - Glamour</span>
               </div>
             </article>
+
+            <article
+              class="gallery-item"
+              data-year="2024"
+              data-category="artistique"
+            >
+              <img
+                src="./img/gallerie/shooting09-09-24-108.jpg"
+                alt="Shooting 09/09/2024 - Séance artistique"
+                loading="lazy"
+              />
+              <div class="gallery-overlay">
+                <span class="font-inter text-sm">09/09/2024 - Artistique</span>
+              </div>
+            </article>
+
+            <article
+              class="gallery-item"
+              data-year="2024"
+              data-category="glamour"
+            >
+              <img
+                src="./img/gallerie/shooting09-09-24-109.jpg"
+                alt="Shooting 09/09/2024 - Photo lingerie"
+                loading="lazy"
+              />
+              <div class="gallery-overlay">
+                <span class="font-inter text-sm">09/09/2024 - Glamour</span>
+              </div>
+            </article>
+
+            <article
+              class="gallery-item"
+              data-year="2024"
+              data-category="artistique"
+            >
+              <img
+                src="./img/gallerie/shooting09-09-24-110.jpg"
+                alt="Shooting 09/09/2024 - Book mannequin"
+                loading="lazy"
+              />
+              <div class="gallery-overlay">
+                <span class="font-inter text-sm">09/09/2024 - Artistique</span>
+              </div>
+            </article>
+
+            <!-- 2023 Photos -->
+            <article
+              class="gallery-item"
+              data-year="2023"
+              data-category="glamour"
+            >
+              <img
+                src="./img/gallerie/shooting09-10-23-001.jpg"
+                alt="Shooting 09/10/2023 - Portrait professionnel"
+                loading="lazy"
+              />
+              <div class="gallery-overlay">
+                <span class="font-inter text-sm">09/10/2023 - Glamour</span>
+              </div>
+            </article>
+
+            <article
+              class="gallery-item"
+              data-year="2023"
+              data-category="artistique"
+            >
+              <img
+                src="./img/gallerie/shooting09-10-23-002.jpg"
+                alt="Shooting 09/10/2023 - Séance photo artistique"
+                loading="lazy"
+              />
+              <div class="gallery-overlay">
+                <span class="font-inter text-sm">09/10/2023 - Artistique</span>
+              </div>
+            </article>
+
+            <article
+              class="gallery-item"
+              data-year="2023"
+              data-category="glamour"
+            >
+              <img
+                src="./img/gallerie/shooting09-10-23-003.jpg"
+                alt="Shooting 09/10/2023 - Book photo mannequin"
+                loading="lazy"
+              />
+              <div class="gallery-overlay">
+                <span class="font-inter text-sm">09/10/2023 - Glamour</span>
+              </div>
+            </article>
+
+            <article
+              class="gallery-item"
+              data-year="2023"
+              data-category="artistique"
+            >
+              <img
+                src="./img/gallerie/shooting09-10-23-004.jpg"
+                alt="Shooting 09/10/2023 - Photo professionnelle"
+                loading="lazy"
+              />
+              <div class="gallery-overlay">
+                <span class="font-inter text-sm">09/10/2023 - Artistique</span>
+              </div>
+            </article>
+
+            <article
+              class="gallery-item"
+              data-year="2023"
+              data-category="glamour"
+            >
+              <img
+                src="./img/gallerie/shooting09-10-23-005.jpg"
+                alt="Shooting 09/10/2023 - Portrait glamour"
+                loading="lazy"
+              />
+              <div class="gallery-overlay">
+                <span class="font-inter text-sm">09/10/2023 - Glamour</span>
+              </div>
+            </article>
+
+            <article
+              class="gallery-item"
+              data-year="2023"
+              data-category="artistique"
+            >
+              <img
+                src="./img/gallerie/shooting09-10-23-006.jpg"
+                alt="Shooting 09/10/2023 - Séance artistique"
+                loading="lazy"
+              />
+              <div class="gallery-overlay">
+                <span class="font-inter text-sm">09/10/2023 - Artistique</span>
+              </div>
+            </article>
+
+            <article
+              class="gallery-item"
+              data-year="2023"
+              data-category="glamour"
+            >
+              <img
+                src="./img/gallerie/shooting09-10-23-007.jpg"
+                alt="Shooting 09/10/2023 - Book mannequin"
+                loading="lazy"
+              />
+              <div class="gallery-overlay">
+                <span class="font-inter text-sm">09/10/2023 - Glamour</span>
+              </div>
+            </article>
+
+            <article
+              class="gallery-item"
+              data-year="2023"
+              data-category="artistique"
+            >
+              <img
+                src="./img/gallerie/shooting09-10-23-008.jpg"
+                alt="Shooting 09/10/2023 - Portrait artistique"
+                loading="lazy"
+              />
+              <div class="gallery-overlay">
+                <span class="font-inter text-sm">09/10/2023 - Artistique</span>
+              </div>
+            </article>
+
+            <article
+              class="gallery-item"
+              data-year="2023"
+              data-category="glamour"
+            >
+              <img
+                src="./img/gallerie/shooting09-10-23-009.jpg"
+                alt="Shooting 09/10/2023 - Séance photo mode"
+                loading="lazy"
+              />
+              <div class="gallery-overlay">
+                <span class="font-inter text-sm">09/10/2023 - Glamour</span>
+              </div>
+            </article>
+
+            <article
+              class="gallery-item"
+              data-year="2023"
+              data-category="artistique"
+            >
+              <img
+                src="./img/gallerie/shooting09-10-23-010.jpg"
+                alt="Shooting 09/10/2023 - Portfolio photo"
+                loading="lazy"
+              />
+              <div class="gallery-overlay">
+                <span class="font-inter text-sm">09/10/2023 - Artistique</span>
+              </div>
+            </article>
+
+            <article
+              class="gallery-item"
+              data-year="2023"
+              data-category="glamour"
+            >
+              <img
+                src="./img/gallerie/shooting09-10-23-011.jpg"
+                alt="Shooting 09/10/2023 - Séance glamour"
+                loading="lazy"
+              />
+              <div class="gallery-overlay">
+                <span class="font-inter text-sm">09/10/2023 - Glamour</span>
+              </div>
+            </article>
+
+            <article
+              class="gallery-item"
+              data-year="2023"
+              data-category="artistique"
+            >
+              <img
+                src="./img/gallerie/shooting09-10-23-012.jpg"
+                alt="Shooting 09/10/2023 - Book professionnel"
+                loading="lazy"
+              />
+              <div class="gallery-overlay">
+                <span class="font-inter text-sm">09/10/2023 - Artistique</span>
+              </div>
+            </article>
+
+            <article
+              class="gallery-item"
+              data-year="2023"
+              data-category="glamour"
+            >
+              <img
+                src="./img/gallerie/shooting09-10-23-014.jpg"
+                alt="Shooting 09/10/2023 - Portrait mode"
+                loading="lazy"
+              />
+              <div class="gallery-overlay">
+                <span class="font-inter text-sm">09/10/2023 - Glamour</span>
+              </div>
+            </article>
+
+            <article
+              class="gallery-item"
+              data-year="2023"
+              data-category="artistique"
+            >
+              <img
+                src="./img/gallerie/shooting09-10-23-015.jpg"
+                alt="Shooting 09/10/2023 - Séance artistique"
+                loading="lazy"
+              />
+              <div class="gallery-overlay">
+                <span class="font-inter text-sm">09/10/2023 - Artistique</span>
+              </div>
+            </article>
+
+            <article
+              class="gallery-item"
+              data-year="2023"
+              data-category="glamour"
+            >
+              <img
+                src="./img/gallerie/shooting09-10-23-016.jpg"
+                alt="Shooting 09/10/2023 - Photo lingerie"
+                loading="lazy"
+              />
+              <div class="gallery-overlay">
+                <span class="font-inter text-sm">09/10/2023 - Glamour</span>
+              </div>
+            </article>
+
+            <article
+              class="gallery-item"
+              data-year="2023"
+              data-category="artistique"
+            >
+              <img
+                src="./img/gallerie/shooting09-10-23-017.jpg"
+                alt="Shooting 09/10/2023 - Book mannequin"
+                loading="lazy"
+              />
+              <div class="gallery-overlay">
+                <span class="font-inter text-sm">09/10/2023 - Artistique</span>
+              </div>
+            </article>
+
+            <article
+              class="gallery-item"
+              data-year="2023"
+              data-category="glamour"
+            >
+              <img
+                src="./img/gallerie/shooting09-10-23-019.jpg"
+                alt="Shooting 09/10/2023 - Portrait professionnel"
+                loading="lazy"
+              />
+              <div class="gallery-overlay">
+                <span class="font-inter text-sm">09/10/2023 - Glamour</span>
+              </div>
+            </article>
+
+            <article
+              class="gallery-item"
+              data-year="2023"
+              data-category="artistique"
+            >
+              <img
+                src="./img/gallerie/shooting09-10-23-020.jpg"
+                alt="Shooting 09/10/2023 - Séance photo artistique"
+                loading="lazy"
+              />
+              <div class="gallery-overlay">
+                <span class="font-inter text-sm">09/10/2023 - Artistique</span>
+              </div>
+            </article>
+
+            <article
+              class="gallery-item"
+              data-year="2023"
+              data-category="glamour"
+            >
+              <img
+                src="./img/gallerie/shooting09-10-23-033.jpg"
+                alt="Shooting 09/10/2023 - Book photo mannequin"
+                loading="lazy"
+              />
+              <div class="gallery-overlay">
+                <span class="font-inter text-sm">09/10/2023 - Glamour</span>
+              </div>
+            </article>
+
+            <article
+              class="gallery-item"
+              data-year="2023"
+              data-category="artistique"
+            >
+              <img
+                src="./img/gallerie/shooting09-10-23-088.jpg"
+                alt="Shooting 09/10/2023 - Portrait glamour"
+                loading="lazy"
+              />
+              <div class="gallery-overlay">
+                <span class="font-inter text-sm">09/10/2023 - Artistique</span>
+              </div>
+            </article>
+
+            <article
+              class="gallery-item"
+              data-year="2023"
+              data-category="glamour"
+            >
+              <img
+                src="./img/gallerie/shooting09-10-23-102.jpg"
+                alt="Shooting 09/10/2023 - Séance artistique"
+                loading="lazy"
+              />
+              <div class="gallery-overlay">
+                <span class="font-inter text-sm">09/10/2023 - Glamour</span>
+              </div>
+            </article>
+
+            <article
+              class="gallery-item"
+              data-year="2023"
+              data-category="artistique"
+            >
+              <img
+                src="./img/gallerie/shooting09-10-23-103.jpg"
+                alt="Shooting 09/10/2023 - Photo professionnelle"
+                loading="lazy"
+              />
+              <div class="gallery-overlay">
+                <span class="font-inter text-sm">09/10/2023 - Artistique</span>
+              </div>
+            </article>
+
+            <article
+              class="gallery-item"
+              data-year="2023"
+              data-category="glamour"
+            >
+              <img
+                src="./img/gallerie/shooting09-10-23-106.jpg"
+                alt="Shooting 09/10/2023 - Book mannequin"
+                loading="lazy"
+              />
+              <div class="gallery-overlay">
+                <span class="font-inter text-sm">09/10/2023 - Glamour</span>
+              </div>
+            </article>
+
+            <!-- Mannequin.jpg -->
+            <article
+              class="gallery-item"
+              data-year="2023"
+              data-category="artistique"
+            >
+              <img
+                src="./img/gallerie/mannequin.jpg"
+                alt="Portrait mannequin professionnel"
+                loading="lazy"
+              />
+              <div class="gallery-overlay">
+                <span class="font-inter text-sm">Portrait - Artistique</span>
+              </div>
+            </article>
+          </div>
+
+          <div class="text-center mt-12">
+            <div class="font-inter text-gray-400 text-sm mb-4">
+              36 photos disponibles - Portfolio complet
+            </div>
           </div>
         </div>
       </section>
 
       <!-- CONTACT SECTION -->
-      <section
-        id="contact"
-        class="py-20 md:py-32 bg-gradient-to-b from-black to-gray-900"
-      >
+      <section id="contact" class="py-20 md:py-32 bg-black section-hidden">
         <div class="max-w-screen-xl mx-auto px-6 text-center">
           <h2
-            class="font-cinzel text-4xl md:text-5xl font-bold text-white mb-8 fade-in-up"
+            class="font-cinzel text-4xl md:text-5xl font-bold text-white-force mb-8"
           >
             Contact
           </h2>
 
           <p
-            class="font-inter text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto fade-in-up"
+            class="font-inter text-lg md:text-xl text-gray-force mb-8 max-w-2xl mx-auto"
           >
-            Vous désirez une collaboration ou organiser un shooting ?
+            Vous désirez une collaboration ou organiser un shooting
+            professionnel ? Je suis disponible pour des projets artistiques,
+            glamour ou créatifs.
           </p>
 
-          <div class="space-y-4 mb-10 fade-in-up">
-            <p class="font-inter text-xl text-white">
-              <a
-                href="tel:+32472913553"
-                class="hover:text-pink-500 transition-colors"
-                aria-label="Téléphone +32 472 91 35 53"
-              >
-                +32 472 91 35 53
-              </a>
-            </p>
-            <p class="font-inter text-xl text-white">
-              <a
-                href="mailto:fb799591@skynet.be"
-                class="hover:text-pink-500 transition-colors"
-                aria-label="Email fb799591@skynet.be"
-              >
-                fb799591@skynet.be
-              </a>
-            </p>
+          <div class="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto mb-12">
+            <!-- Contact Info -->
+            <div class="text-left">
+              <h3 class="font-cinzel text-2xl font-bold text-white-force mb-6">
+                Informations de contact
+              </h3>
+
+              <div class="space-y-6">
+                <div>
+                  <h4 class="font-inter font-semibold text-white-force mb-2">
+                    Téléphone
+                  </h4>
+                  <p class="font-inter text-xl">
+                    <a
+                      href="tel:+32472913553"
+                      class="text-white-force hover:text-pink-400 transition-colors"
+                      aria-label="Téléphone +32 472 91 35 53"
+                    >
+                      +32 472 91 35 53
+                    </a>
+                  </p>
+                </div>
+
+                <div>
+                  <h4 class="font-inter font-semibold text-white-force mb-2">
+                    Email
+                  </h4>
+                  <p class="font-inter text-xl">
+                    <a
+                      href="mailto:fb799591@skynet.be"
+                      class="text-white-force hover:text-pink-400 transition-colors"
+                      aria-label="Email fb799591@skynet.be"
+                    >
+                      fb799591@skynet.be
+                    </a>
+                  </p>
+                </div>
+
+                <div>
+                  <h4 class="font-inter font-semibold text-white-force mb-2">
+                    Disponibilités
+                  </h4>
+                  <p class="font-inter text-gray-force">
+                    Lundi au Vendredi: 9h - 18h<br />
+                    Week-end: Sur rendez-vous
+                  </p>
+                </div>
+
+                <div>
+                  <h4 class="font-inter font-semibold text-white-force mb-2">
+                    Zone géographique
+                  </h4>
+                  <p class="font-inter text-gray-force">
+                    Belgique entière<br />
+                    Déplacements possibles en Europe
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form">
+              <h3 class="font-cinzel text-2xl font-bold text-white-force mb-6">
+                Envoyez-moi un message
+              </h3>
+
+              <form id="contactForm" class="space-y-4">
+                <div class="grid grid-cols-2 gap-4">
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Votre nom *"
+                    required
+                    class="contact-form-input"
+                  />
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Votre email *"
+                    required
+                    class="contact-form-input"
+                  />
+                </div>
+
+                <input
+                  type="text"
+                  name="subject"
+                  placeholder="Sujet du message"
+                  class="contact-form-input"
+                />
+
+                <textarea
+                  name="message"
+                  placeholder="Votre message *"
+                  required
+                  class="contact-form-textarea"
+                ></textarea>
+
+                <div class="text-left">
+                  <button type="submit" class="btn-neon w-full md:w-auto">
+                    Envoyer le message
+                  </button>
+                </div>
+
+                <p class="text-sm text-gray-500 font-inter">
+                  * Champs obligatoires. Je vous répondrai dans les 48 heures.
+                </p>
+              </form>
+            </div>
           </div>
 
-          <a
-            href="mailto:fb799591@skynet.be"
-            class="btn-neon inline-block fade-in-up"
-            aria-label="Contactez-moi par email"
-          >
-            Contactez-moi
-          </a>
+          <!-- SOCIAL LINKS -->
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Instagram">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                />
+              </svg>
+            </a>
+            <a href="#" class="social-link" aria-label="Facebook">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
+                />
+              </svg>
+            </a>
+            <a href="#" class="social-link" aria-label="Twitter">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.213c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"
+                />
+              </svg>
+            </a>
+          </div>
         </div>
       </section>
     </main>
 
     <!-- FOOTER -->
     <footer class="bg-black border-t border-gray-800 py-8">
-      <div class="max-w-screen-xl mx-auto px-6 text-center">
-        <p class="font-inter text-gray-500 text-sm">
-          © 2025 Mannequin Belge. Tous droits réservés. designed par
-          maxsolving.com
-        </p>
+      <div class="max-w-screen-xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <p class="font-inter text-gray-500 text-sm mb-4 md:mb-0">
+            © 2024 Mannequin Belge. Tous droits réservés.
+          </p>
+          <p class="font-inter text-gray-500 text-sm">
+            Design et développement par
+            <a href="#" class="text-pink-400 hover:text-white transition-colors"
+              >Nicolas Pirotte Infographiste</a
+            >
+          </p>
+        </div>
       </div>
     </footer>
 
@@ -670,91 +1648,270 @@
       role="dialog"
       aria-label="Lightbox pour agrandir les images"
     >
-      <span class="lightbox-close" aria-label="Fermer la lightbox"
-        >&times;</span
-      >
-      <img id="lightbox-img" src="" alt="Image agrandie" />
+      <div class="lightbox-container">
+        <span class="lightbox-close" aria-label="Fermer la lightbox"
+          >&times;</span
+        >
+        <div class="lightbox-nav lightbox-prev" aria-label="Image précédente">
+          ‹
+        </div>
+        <img id="lightbox-img" src="" alt="Image agrandie" />
+        <div class="lightbox-nav lightbox-next" aria-label="Image suivante">
+          ›
+        </div>
+        <div class="lightbox-counter" id="lightbox-counter">1 / 36</div>
+      </div>
     </div>
 
-    <!-- GSAP -->
+    <!-- SCRIPTS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
     <script>
-      // GSAP ScrollTrigger Animations
+      // Initialize GSAP
       gsap.registerPlugin(ScrollTrigger);
 
-      // Fade In Up Elements
-      gsap.utils.toArray(".fade-in-up").forEach((element) => {
-        gsap.from(element, {
-          opacity: 0,
-          y: 50,
-          duration: 1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: element,
-            start: "top 85%",
-            toggleActions: "play none none none",
-          },
-        });
+      // Header scroll effect
+      window.addEventListener("scroll", () => {
+        const header = document.getElementById("mainHeader");
+        if (window.scrollY > 100) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
       });
 
-      // Mobile Menu Toggle
+      // Progress bar
+      window.addEventListener("scroll", () => {
+        const winScroll =
+          document.body.scrollTop || document.documentElement.scrollTop;
+        const height =
+          document.documentElement.scrollHeight -
+          document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        document.getElementById("progressBar").style.width = scrolled + "%";
+      });
+
+      // Mobile menu
       const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+      const closeMobileMenu = document.getElementById("closeMobileMenu");
       const mobileMenu = document.getElementById("mobileMenu");
       const mobileLinks = document.querySelectorAll(".mobile-link");
 
       mobileMenuBtn.addEventListener("click", () => {
-        mobileMenu.classList.toggle("hidden");
+        mobileMenu.classList.remove("hidden");
+        document.body.style.overflow = "hidden";
+      });
+
+      closeMobileMenu.addEventListener("click", () => {
+        mobileMenu.classList.add("hidden");
+        document.body.style.overflow = "auto";
       });
 
       mobileLinks.forEach((link) => {
         link.addEventListener("click", () => {
           mobileMenu.classList.add("hidden");
+          document.body.style.overflow = "auto";
         });
       });
 
-      // Lightbox Functionality
+      // Gallery filter
+      const filterButtons = document.querySelectorAll(".filter-btn");
+      const galleryItems = document.querySelectorAll(".gallery-item");
+
+      filterButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          // Remove active class from all buttons
+          filterButtons.forEach((btn) => btn.classList.remove("active"));
+
+          // Add active class to clicked button
+          button.classList.add("active");
+
+          const filterValue = button.getAttribute("data-filter");
+
+          galleryItems.forEach((item) => {
+            if (filterValue === "all") {
+              item.style.display = "block";
+            } else if (
+              item.getAttribute("data-year") === filterValue ||
+              item.getAttribute("data-category") === filterValue
+            ) {
+              item.style.display = "block";
+            } else {
+              item.style.display = "none";
+            }
+          });
+        });
+      });
+
+      // Lightbox functionality
       const lightbox = document.getElementById("lightbox");
       const lightboxImg = document.getElementById("lightbox-img");
       const lightboxClose = document.querySelector(".lightbox-close");
-      const galleryItems = document.querySelectorAll(".gallery-item img");
+      const lightboxPrev = document.querySelector(".lightbox-prev");
+      const lightboxNext = document.querySelector(".lightbox-next");
+      const lightboxCounter = document.getElementById("lightbox-counter");
 
-      galleryItems.forEach((item) => {
+      let currentImageIndex = 0;
+      const images = Array.from(galleryItems).map((item) => ({
+        src: item.querySelector("img").src,
+        alt: item.querySelector("img").alt,
+      }));
+
+      // Open lightbox
+      galleryItems.forEach((item, index) => {
         item.addEventListener("click", () => {
+          currentImageIndex = index;
+          updateLightbox();
           lightbox.classList.add("active");
-          lightboxImg.src = item.src;
-          lightboxImg.alt = item.alt;
           document.body.style.overflow = "hidden";
         });
       });
 
-      lightboxClose.addEventListener("click", closeLightbox);
-      lightbox.addEventListener("click", (e) => {
-        if (e.target === lightbox) closeLightbox();
+      // Navigation functions
+      function updateLightbox() {
+        lightboxImg.src = images[currentImageIndex].src;
+        lightboxImg.alt = images[currentImageIndex].alt;
+        lightboxCounter.textContent = `${currentImageIndex + 1} / ${
+          images.length
+        }`;
+      }
+
+      lightboxPrev.addEventListener("click", (e) => {
+        e.stopPropagation();
+        currentImageIndex =
+          (currentImageIndex - 1 + images.length) % images.length;
+        updateLightbox();
       });
 
+      lightboxNext.addEventListener("click", (e) => {
+        e.stopPropagation();
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        updateLightbox();
+      });
+
+      // Close lightbox
       function closeLightbox() {
         lightbox.classList.remove("active");
         document.body.style.overflow = "auto";
       }
 
-      // ESC key to close lightbox
+      lightboxClose.addEventListener("click", closeLightbox);
+
+      lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) closeLightbox();
+      });
+
+      // Keyboard navigation
       document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && lightbox.classList.contains("active")) {
-          closeLightbox();
+        if (!lightbox.classList.contains("active")) return;
+
+        switch (e.key) {
+          case "Escape":
+            closeLightbox();
+            break;
+          case "ArrowLeft":
+            currentImageIndex =
+              (currentImageIndex - 1 + images.length) % images.length;
+            updateLightbox();
+            break;
+          case "ArrowRight":
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            updateLightbox();
+            break;
         }
       });
 
-      // Smooth Scroll
+      // Smooth scroll for anchor links
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener("click", function (e) {
+          if (this.getAttribute("href") === "#") return;
+
           e.preventDefault();
           const target = document.querySelector(this.getAttribute("href"));
           if (target) {
-            target.scrollIntoView({ behavior: "smooth", block: "start" });
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
           }
         });
+      });
+
+      // Scroll animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("section-visible");
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll(".section-hidden").forEach((section) => {
+        observer.observe(section);
+      });
+
+      // Contact form
+      const contactForm = document.getElementById("contactForm");
+      if (contactForm) {
+        contactForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Get form data
+          const formData = new FormData(this);
+          const data = Object.fromEntries(formData);
+
+          // Simulate form submission
+          console.log("Form submitted:", data);
+
+          // Show success message
+          alert(
+            "Merci pour votre message ! Je vous répondrai dans les plus brefs délais."
+          );
+
+          // Reset form
+          this.reset();
+        });
+      }
+
+      // Initialize animations on page load
+      window.addEventListener("load", () => {
+        // Animate hero content
+        gsap.from(".hero-title", {
+          duration: 1.2,
+          y: 50,
+          opacity: 0,
+          ease: "power3.out",
+        });
+
+        gsap.from(".hero-subtitle", {
+          duration: 1,
+          y: 30,
+          opacity: 0,
+          delay: 0.3,
+          ease: "power3.out",
+        });
+
+        gsap.from(".btn-neon", {
+          duration: 1,
+          y: 30,
+          opacity: 0,
+          delay: 0.6,
+          ease: "power3.out",
+        });
+      });
+
+      // Précharger l'image desktop pour éviter le flash sur changement
+      window.addEventListener("load", () => {
+        if (window.innerWidth >= 1024) {
+          const desktopImage = new Image();
+          desktopImage.src = "./img/hero-header-desktop.jpg";
+        }
       });
     </script>
   </body>
