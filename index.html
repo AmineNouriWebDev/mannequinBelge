@@ -8,12 +8,18 @@
       name="description"
       content="Portfolio officiel. Modèle photo en Belgique spécialisée en shooting glamour, lingerie et nu artistique."
     />
-    <meta name="author" content="maxsolving.com />
+    <meta name="author" content="maxsolving.com" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Ajout du CSS de Calendly -->
+    <link
+      href="https://assets.calendly.com/assets/external/widget.css"
       rel="stylesheet"
     />
 
@@ -538,6 +544,17 @@
         background: linear-gradient(90deg, #ff006e, #8338ec);
         z-index: 1000;
         transition: width 0.3s ease;
+      }
+
+      /* CALENDLY FIX - Empêche les conflits de z-index */
+      .calendly-overlay {
+        z-index: 100000 !important;
+      }
+      .calendly-popup {
+        z-index: 100001 !important;
+      }
+      .calendly-popup-close {
+        z-index: 100002 !important;
       }
     </style>
   </head>
@@ -1127,6 +1144,7 @@
           </div>
         </div>
       </section>
+
       <section id="reservation" class="py-24 bg-gray-900 section-hidden">
         <div class="max-w-4xl mx-auto px-6 text-center">
           <h2 class="font-cinzel text-4xl md:text-5xl mb-6 text-neon">
@@ -1137,16 +1155,20 @@
             convient pour une collaboration artistique et professionnelle.
           </p>
 
-          <!-- Bouton Calendly stylisé -->
-          <button
-            class="btn-neon"
-            onclick="Calendly.initPopupWidget({url: 'https://calendly.com/nickyiemannequinbelge/30min'}); return false;"
-          >
-            Voir les disponibilités et réserver
-          </button>
+          <!-- Bouton Calendly amélioré -->
+          <div
+            class="calendly-inline-widget"
+            data-url="https://calendly.com/nickyiemannequinbelge/30min"
+            style="
+              min-width: 320px;
+              height: 700px;
+              display: inline-block;
+              width: 100%;
+            "
+          ></div>
 
           <p class="text-gray-500 text-sm mt-6">
-            Vous serez redirigé vers notre agenda interactif.
+            Sélectionnez une date et heure disponible pour votre shooting.
           </p>
         </div>
       </section>
@@ -1333,6 +1355,13 @@
     <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
     <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
 
+    <!-- Script Calendly avec intégration correcte -->
+    <script
+      type="text/javascript"
+      src="https://assets.calendly.com/assets/external/widget.js"
+      async
+    ></script>
+
     <script>
       // 1. NAVIGATION & SCROLL
       $(window).scroll(function () {
@@ -1436,11 +1465,5 @@
         });
       });
     </script>
-    <!-- Script Calendly -->
-    <script
-      type="text/javascript"
-      src="https://assets.calendly.com/assets/external/widget.js"
-      async
-    ></script>
   </body>
 </html>
