@@ -8,7 +8,7 @@
       name="description"
       content="Portfolio officiel. Modèle photo en Belgique spécialisée en shooting glamour, lingerie et nu artistique."
     />
-    <meta name="author" content="Nicolas Pirotte Infographiste" />
+    <meta name="author" content="maxsolving.com />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -1127,6 +1127,29 @@
           </div>
         </div>
       </section>
+      <section id="reservation" class="py-24 bg-gray-900 section-hidden">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+          <h2 class="font-cinzel text-4xl md:text-5xl mb-6 text-neon">
+            Réserver une séance
+          </h2>
+          <p class="font-inter text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
+            Sélectionnez votre type de shooting et choisissez une date qui vous
+            convient pour une collaboration artistique et professionnelle.
+          </p>
+
+          <!-- Bouton Calendly stylisé -->
+          <button
+            class="btn-neon"
+            onclick="Calendly.initPopupWidget({url: 'https://calendly.com/nickyiemannequinbelge/30min'}); return false;"
+          >
+            Voir les disponibilités et réserver
+          </button>
+
+          <p class="text-gray-500 text-sm mt-6">
+            Vous serez redirigé vers notre agenda interactif.
+          </p>
+        </div>
+      </section>
 
       <section id="contact" class="py-24 bg-black section-hidden">
         <div class="max-w-6xl mx-auto px-6">
@@ -1413,5 +1436,11 @@
         });
       });
     </script>
+    <!-- Script Calendly -->
+    <script
+      type="text/javascript"
+      src="https://assets.calendly.com/assets/external/widget.js"
+      async
+    ></script>
   </body>
 </html>
