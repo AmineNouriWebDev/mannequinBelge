@@ -556,6 +556,231 @@
       .calendly-popup-close {
         z-index: 100002 !important;
       }
+      /* --- SECTION ABOUT DOMI D --- */
+      .about-section {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .about-container {
+        position: relative;
+        z-index: 10;
+      }
+
+      .about-image-wrapper {
+        position: relative;
+        overflow: hidden;
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(255, 0, 110, 0.2);
+      }
+
+      .about-image-wrapper::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 0, 110, 0.1),
+          rgba(131, 56, 236, 0.1)
+        );
+        z-index: 1;
+        transition: opacity 0.5s ease;
+      }
+
+      .about-image-wrapper:hover::before {
+        opacity: 0;
+      }
+
+      .about-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.7s ease;
+        display: block;
+      }
+
+      .about-image-wrapper:hover .about-image {
+        transform: scale(1.05);
+      }
+
+      .about-content {
+        position: relative;
+      }
+
+      .about-title {
+        font-family: "Cinzel", serif;
+        font-size: 3rem;
+        background: linear-gradient(135deg, #ff006e, #8338ec);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 1.5rem;
+        position: relative;
+        display: inline-block;
+      }
+
+      .about-title::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 80px;
+        height: 3px;
+        background: linear-gradient(90deg, #ff006e, #8338ec);
+        border-radius: 2px;
+      }
+
+      .about-subtitle {
+        color: #ff006e;
+        font-size: 1.125rem;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 2rem;
+        opacity: 0.9;
+      }
+
+      .about-text {
+        line-height: 1.9;
+        color: #e5e5e5;
+        font-size: 1.05rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .about-text strong {
+        color: #ff006e;
+        font-weight: 600;
+      }
+
+      .highlight-box {
+        background: rgba(255, 0, 110, 0.05);
+        border-left: 4px solid #ff006e;
+        padding: 1.5rem;
+        border-radius: 8px;
+        margin: 2rem 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .highlight-box::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          rgba(255, 0, 110, 0.05),
+          transparent
+        );
+        z-index: 0;
+      }
+
+      .highlight-box p {
+        position: relative;
+        z-index: 1;
+        margin: 0;
+      }
+
+      .passion-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+
+      .passion-item {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 1rem;
+        border-radius: 12px;
+        text-align: center;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .passion-item::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 0, 110, 0.1),
+          transparent
+        );
+        transition: left 0.5s ease;
+      }
+
+      .passion-item:hover::before {
+        left: 100%;
+      }
+
+      .passion-item:hover {
+        border-color: #ff006e;
+        background: rgba(255, 0, 110, 0.08);
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(255, 0, 110, 0.2);
+      }
+
+      .passion-icon {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .passion-text {
+        font-size: 0.9rem;
+        color: #fff;
+        font-weight: 500;
+      }
+
+      .decorative-element {
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        filter: blur(100px);
+        opacity: 0.1;
+        pointer-events: none;
+      }
+
+      .decorative-element-1 {
+        background: #ff006e;
+        top: -150px;
+        right: -150px;
+      }
+
+      .decorative-element-2 {
+        background: #8338ec;
+        bottom: -150px;
+        left: -150px;
+      }
+
+      @media (max-width: 768px) {
+        .about-title {
+          font-size: 2rem;
+        }
+
+        .about-subtitle {
+          font-size: 1rem;
+        }
+
+        .about-text {
+          font-size: 1rem;
+        }
+
+        .passion-grid {
+          grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        }
+      }
     </style>
   </head>
   <body>
@@ -573,7 +798,7 @@
         class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center"
       >
         <a href="#" class="font-cinzel text-2xl font-bold tracking-wider">
-          MANNEQUIN BELGE
+          DOMI D
         </a>
 
         <ul
@@ -616,6 +841,96 @@
             Entre ombre et lumière, chaque instant capturé devient éternité
           </p>
           <a href="#galerie" class="btn-neon">Voir le Book</a>
+        </div>
+      </section>
+      <!-- NOUVELLE SECTION : À PROPOS DE DOMI D -->
+      <section id="about" class="about-section py-24 bg-black section-hidden">
+        <div class="about-container max-w-7xl mx-auto px-6">
+          <!-- Éléments décoratifs -->
+          <div class="decorative-element decorative-element-1"></div>
+          <div class="decorative-element decorative-element-2"></div>
+
+          <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <!-- Image -->
+            <div class="about-image-wrapper" data-aos="fade-right">
+              <img
+                src="./img/gallerie/2025/8.jpeg"
+                alt="Domi D - Mannequin & Coach Bien-Être"
+                class="about-image"
+              />
+            </div>
+
+            <!-- Contenu -->
+            <div class="about-content" data-aos="fade-left">
+              <h2 class="about-title">Domi D</h2>
+              <p class="about-subtitle">
+                Mannequin • Coach Bien-Être • Ambassadrice
+              </p>
+
+              <p class="about-text">
+                <strong>Domi D</strong> est un mannequin basé en Belgique, forte
+                de plusieurs années d'expérience dans le milieu de la publicité,
+                des podiums et du monde des photographes.
+              </p>
+
+              <p class="about-text">
+                Véritable passionnée de sports — <strong>Miss Fitness</strong>,
+                yoga, cani-cross, muay thaï, dressage équin et canin — elle
+                s'entraîne quotidiennement à ses diverses activités et parcourt
+                les salles de fitness et espaces éthologiques depuis son
+                adolescence, en faisant du sport et du végétalisme son véritable
+                mode de vie.
+              </p>
+
+              <div class="highlight-box">
+                <p class="about-text">
+                  <strong>Déterminée, énergique et passionnée</strong>, Domi D
+                  incarne un état d'esprit sain et actif, profondément engagée
+                  pour la <strong>protection animale</strong>. Elle est
+                  présidente et ambassadrice de
+                  <strong>Holistic Pet Association</strong>.
+                </p>
+              </div>
+
+              <p class="about-text">
+                Au-delà de son amour pour les animaux, le mouvement et la
+                nature, elle possède un sens du style raffiné qui reflète sa
+                personnalité élégante et moderne. Passionnée de spiritualité et
+                de décoration
+                <strong>Feng Shui</strong>, elle apporte son œil pour
+                l'esthétique, l'harmonie et le détail dans chaque aspect de sa
+                vie.
+              </p>
+
+              <!-- Grille de passions -->
+              <div class="passion-grid">
+                <div class="passion-item">
+                  <div class="passion-icon">💪</div>
+                  <div class="passion-text">Fitness & Sport</div>
+                </div>
+                <div class="passion-item">
+                  <div class="passion-icon">🐾</div>
+                  <div class="passion-text">Protection Animale</div>
+                </div>
+                <div class="passion-item">
+                  <div class="passion-icon">🧘</div>
+                  <div class="passion-text">Yoga & Spiritualité</div>
+                </div>
+                <div class="passion-item">
+                  <div class="passion-icon">🌿</div>
+                  <div class="passion-text">Végétalisme</div>
+                </div>
+                <div class="passion-item">
+                  <div class="passion-icon">🏠</div>
+                  <div class="passion-text">Feng Shui</div>
+                </div>
+                <div class="passion-item">
+                  <div class="passion-icon">📸</div>
+                  <div class="passion-text">Modélisme</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
